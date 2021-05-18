@@ -5,26 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/05/18 12:05:03 by jekim             #+#    #+#              #
-#    Updated: 2021/05/18 14:40:16 by jekim            ###   ########.fr        #
+#    Created: 2021/05/18 13:30:27 by jekim             #+#    #+#              #
+#    Updated: 2021/05/18 16:27:09 by jekim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJDIR	= ./obj
-NAME	= push_swap
-RM		= rm
-RMFLAG	= -rf
+NAME = push_swap
+CC = gcc
+ 
+SRCDIR = ../src/
+INCDIR = ../include
+LIBDIR = ../libft
 
-all:	
-		cd $(OBJDIR) && make
+CCFLAG = -Wall -Wextra -Werror -I(INC_DIR)
 
-clean:
-		cd $(OBJDIR) && clean 
-		
-fclean:		clean
-		cd .. && $(RM) $(RMFLAG) $(NAME)	
+SRCFILE = dlst/dlst1.c \
+			dlst/dlst2.c \
+			dlst/stack.c \
+			inst/inst1.c \
+			inst/inst2.c
 
-re:		
-		fclean $(NAME)
+SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
 
-.PHONY:			all clean fclean re
+SRCS := $(notdir $(SRCS))
+OBJS = $(SRCS:.c=.o)
+
+all : $(NAME)

@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 12:01:49 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/18 18:49:02 by jekim            ###   ########.fr       */
+/*   Created: 2021/05/18 16:26:46 by jekim             #+#    #+#             */
+/*   Updated: 2021/05/18 17:57:52 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/dlst.h"
+#include "../../include/push_swap.h"
+#include "../libft/libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-#include <unistd.h>
-#include <stdlib.h>
-
-# define TRUE 1
-# define FALSE 0
-
-int	ft_validate_params(int argc, char **argv);
-int ft_print_stderr(char *errstr);
-
-#endif
