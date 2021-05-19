@@ -6,14 +6,21 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:01:42 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/18 21:26:47 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/19 14:02:47 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/push_swap.h"
 #include "./include/dlst.h"
 
-t_bucket *ft_init_bucket(void)
+t_stack		ft_set_dumnode(t_stack *stack)
+{
+	t_dlst	node;
+	
+	node = ft_dlstnew(NULL);
+}
+
+t_bucket	*ft_init_bucket(void)
 {
 	t_bucket 	*bucket;
 	t_stack		*A;
@@ -45,3 +52,7 @@ int main(int argc, char **argv)
 
 // argc == 1
 // stdio에서 아무것도 안나와야함 -> 그냥 exit;
+
+// 1 2 "345" => 1 2 345
+// 1 2 "3 45" => 1 2 3 45
+// 1 2 "-1-2" => Error
