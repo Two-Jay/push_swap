@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 04:17:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/18 18:46:05 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/19 15:13:18 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void				ft_putstr_fd(char *s, int fd);
 ** type conversion functions
 */
 char				*ft_itoa(int n);
-int					ft_atoi(const char *nptr);
+long long			ft_atoi(const char *nptr);
 
 /*
 ** memory management functions
