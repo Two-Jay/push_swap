@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/19 18:39:26 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/20 16:53:46 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_dlst			*ft_dlstpop_front(t_stack *stack)
 	t_dlst *newtop;
 	
 	if (!stack || stack->size == 0)
-		return ;
+		return (NULL);
 	ret = stack->top;
 	newtop = stack->top->next;
 	stack->top = newtop;
@@ -91,7 +91,7 @@ t_dlst			*ft_dlstpop_back(t_stack *stack)
 	t_dlst	*newbottom;
 
 	if (!stack || stack->size == 0)
-		return ;
+		return (NULL);
 	ret = stack->bottom;
 	newbottom = stack->bottom->before;
 	stack->bottom = newbottom;
@@ -133,7 +133,8 @@ t_dlst			*ft_dlstback(t_dlst *node, unsigned int step)
 	return (ptr);
 }
 
-t_dlst	*ft_dlstnew(void *value)
+// ok
+t_dlst	*ft_dlstnew(int value)
 {
 	t_dlst	*node;
 	
@@ -141,10 +142,43 @@ t_dlst	*ft_dlstnew(void *value)
 	if (!node)
 		return (NULL);
 	if (!value)
-		node->value = NULL;
+		node->value = 0;
 	else
 		node->value = value;
 	node->next = NULL;
 	node->before = NULL;
 	return (node);
+}
+
+
+t_bucket	*ft_init_bucket(void)
+{
+	t_bucket 	*bucket;
+	t_stack		*A;
+	t_stack		*B;
+	
+	bucket = (t_bucket *)calloc(1, sizeof(t_bucket));
+	if (!bucket)
+		return (NULL);
+		//return (ft_handle_stderr("bucket init error in _init_bucket_\n"));
+	A = (t_stack *)calloc(1, sizeof(t_stack));
+	B = (t_stack *)calloc(1, sizeof(t_stack));
+	if (!A || !B)
+		return (NULL);
+		//return (ft_handle_stderr("stack init error in _init_bucket_\n"));
+	bucket->A = A;
+	bucket->B = B;
+	return (bucket);
+}
+
+int main(void)
+{
+	t_dlst	*node0 = ft_dlstnew(1);
+	t_dlst	*node1 = ft_dlstnew(3);
+	t_dlst	*node2 = ft_dlstnew(5);
+	t_dlst	*node3 = ft_dlstnew(7);
+	t_dlst	*node4 = ft_dlstnew(9);
+	t_bucket *bucket = ft_init_bucket();	
+
+
 }

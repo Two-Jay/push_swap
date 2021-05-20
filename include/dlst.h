@@ -6,19 +6,20 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 16:02:06 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/19 18:41:20 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/19 19:02:14 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DLST_H
 # define DLST_H
 
-typedef struct	s_bucket
+typedef struct		s_dlst
 {
-	t_stack	*A;
-	t_stack	*B;
-	size_t	size;
-}				t_bucket;
+	size_t			idx;
+	int				value;
+	struct s_dlst	*next;
+	struct s_dlst	*before;
+}					t_dlst;
 
 typedef struct	s_stack
 {
@@ -27,15 +28,14 @@ typedef struct	s_stack
 	size_t	size;
 }				t_stack;
 
-typedef struct	s_dlst
+typedef struct	s_bucket
 {
-	size_t	idx;
-	void	*value;
-	t_dlst	*next;
-	t_dlst	*before;
-}				t_dlst;
+	t_stack	*A;
+	t_stack	*B;
+	size_t	size;
+}				t_bucket;
 
-t_dlst			*ft_dlstnew(void *value);
+t_dlst			*ft_dlstnew(int value);
 t_dlst			*ft_dlstpop_back(t_stack *stack);
 t_dlst			*ft_dlstpop_front(t_stack *stack);
 int				ft_dlstadd_back(t_stack *stack, t_dlst *node);
