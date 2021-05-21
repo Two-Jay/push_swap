@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 19:26:28 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 19:53:12 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,24 +121,38 @@ t_dlst			*ft_dlstpop_front(t_stack *stack)
 	}
 }
 
+// ok
 t_dlst			*ft_dlstpop_back(t_stack *stack)
 {
-	t_dlst	*ret;
-	t_dlst	*newbottom;
+	t_dlst *ret;
+	t_dlst *newbottom;
 
 	if (!stack || stack->size == 0)
 		return (NULL);
-	ret = stack->bottom;
-	newbottom = stack->bottom->before;
-	stack->bottom = newbottom;
-	stack->top->before = newbottom;
-	newbottom->next = stack->top;
-	ret->next = NULL;
-	ret->before = NULL;
-	stack->size -= 1;
-	return (ret);
+	if (stack->size == 1)
+	{
+		ret = stack->top;
+		ret->next = NULL;
+		ret->before = NULL;
+		stack->top = NULL;
+		stack->bottom = NULL;
+		stack->size--;
+		return (ret);
+	}
+	else
+	{
+		ret = stack->bottom;
+		newbottom = stack->bottom->before;
+		stack->bottom = newbottom;
+		newbottom->next = stack->top;
+		ret->next = NULL;
+		ret->before = NULL;
+		stack->size--;
+		return (ret);
+	}
 }
 
+// ok
 t_dlst			*ft_dlstnext(t_dlst *node, unsigned int step)
 {
 	int		ix;
@@ -154,6 +168,7 @@ t_dlst			*ft_dlstnext(t_dlst *node, unsigned int step)
 	return (ptr);
 }
 
+//ok
 t_dlst			*ft_dlstback(t_dlst *node, unsigned int step)
 {
 	int		ix;
@@ -208,17 +223,3 @@ int ft_dlstprint(t_stack *stack)
 	}
 	return (EXIT_SUCCESS);
 }
-
-int main(void)
-{
-	t_bucket *bucket = ft_init_bucket();
-	t_dlst	*node;
-	int value = 0;
-
-	ft_dlstadd_back(bucket->A, value++);
-	ft_dlstadd_back(bucket->A, value++);
-	ft_dlstadd_back(bucket->A, value);
-	ft_dlstprint(bucket->A);
-	return (EXIT_SUCCESS);
-}
-
