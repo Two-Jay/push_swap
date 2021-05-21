@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:01:42 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/19 14:02:47 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/20 14:18:41 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_stack		ft_set_dumnode(t_stack *stack)
 	t_dlst	node;
 	
 	node = ft_dlstnew(NULL);
+	stack->top = node
 }
 
 t_bucket	*ft_init_bucket(void)
