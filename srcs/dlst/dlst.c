@@ -6,26 +6,134 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/20 14:22:05 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 09:46:13 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 #include "../../include/dlst.h"
 
-void	ft_dlstadd_front(t_stack *stack, t_dlst *newnode)
+int				ft_dlstadd_front(t_stack *stack, t_dlst *node)
 {
 	t_dlst *tmp;
 
-	tmp = 0;
-	if (!stack || !newnode)
-		return ;
-	
-	stack->top->next = newnode;
+	tmp = stack->top;
+	if (!stack || !node)
+		return (EXIT_FAILURE);
+	node->next = tmp;
+	node->before = stack->bottom;
+	stack->bottom->next = node;
+	stack->top = node;
+	tmp->before = node;
+	stack->size += 1;
+	return (EXIT_SUCCESS);
 }
 
+int				ft_dlstadd_back(t_stack *stack, t_dlst *node)
+{
+	t_dlst *tmp;
 
-//check
+	tmp = stack->bottom;
+	if (!stack || !node)
+		return (EXIT_FAILURE);
+	node->before = tmp;
+	node->next = stack->top;
+	stack->top->before = node;
+	stack->bottom = node;
+	tmp->next = node;
+	stack->size += 1;
+	return (EXIT_SUCCESS);
+}
+
+unsigned int	ft_dlst_idxof(t_stack *stack, int target)
+{
+	int ix;
+	t_dlst	*ptr;
+	
+	if (!stack)
+		return (-1);
+	ix = 0;
+	ptr = stack->top;
+	while (ptr && ix < stack->size)
+	{
+		if (ptr->value == target)
+			return (ix);
+		else
+		{
+			ptr = ptr->next;
+			ix++;
+		}
+	}
+	return (-1);
+}
+
+t_dlst			*ft_dlstpop_front(t_stack *stack)
+{
+	t_dlst *ret;
+	t_dlst *newtop;
+	
+	if (!stack || stack->size == 0)
+		return (NULL);
+	ret = stack->top;
+	newtop = stack->top->next;
+	stack->top = newtop;
+	stack->bottom->next = newtop;
+	newtop->before = stack->bottom;
+	ret->next = NULL;
+	ret->before = NULL;
+	stack->size -= 1;
+	return (ret);
+}
+
+t_dlst			*ft_dlstpop_back(t_stack *stack)
+{
+	t_dlst	*ret;
+	t_dlst	*newbottom;
+
+	if (!stack || stack->size == 0)
+		return (NULL);
+	ret = stack->bottom;
+	newbottom = stack->bottom->before;
+	stack->bottom = newbottom;
+	stack->top->before = newbottom;
+	newbottom->next = stack->top;
+	ret->next = NULL;
+	ret->before = NULL;
+	stack->size -= 1;
+	return (ret);
+}
+
+t_dlst			*ft_dlstnext(t_dlst *node, unsigned int step)
+{
+	int		ix;
+	t_dlst	*ptr;
+	
+	ix = 0;
+	ptr = node;
+	while (ptr->next && ix < step)
+	{
+		ptr = ptr->next;
+		ix++;
+	}
+	return (ptr);
+}
+
+t_dlst			*ft_dlstback(t_dlst *node, unsigned int step)
+{
+	int		ix;
+	t_dlst	*ptr;
+	
+	ix = 0;
+	ptr = node;
+	while (ptr->before && ix < step)
+	{
+		ptr = ptr->before;
+		ix++;
+	}
+	return (ptr);
+}
+
+// ok
 t_dlst	*ft_dlstnew(int value)
 {
 	t_dlst	*node;
@@ -42,36 +150,35 @@ t_dlst	*ft_dlstnew(int value)
 	return (node);
 }
 
-int main()
+
+t_bucket	*ft_init_bucket(void)
 {
-	t_dlst	*node = ft_dlstnew(3);
+	t_bucket 	*bucket;
+	t_stack		*A;
+	t_stack		*B;
+	
+	bucket = (t_bucket *)calloc(1, sizeof(t_bucket));
+	if (!bucket)
+		return (NULL);
+		//return (ft_handle_stderr("bucket init error in _init_bucket_\n"));
+	A = (t_stack *)calloc(1, sizeof(t_stack));
+	B = (t_stack *)calloc(1, sizeof(t_stack));
+	if (!A || !B)
+		return (NULL);
+		//return (ft_handle_stderr("stack init error in _init_bucket_\n"));
+	bucket->A = A;
+	bucket->B = B;
+	return (bucket);
+}
+
+int main(void)
+{
+	t_dlst	*node0 = ft_dlstnew(1);
+	t_dlst	*node1 = ft_dlstnew(3);
 	t_dlst	*node2 = ft_dlstnew(5);
 	t_dlst	*node3 = ft_dlstnew(7);
+	t_dlst	*node4 = ft_dlstnew(9);
+	t_bucket *bucket = ft_init_bucket();	
 
-	printf("node1 value == [%d]\n", node->value);
-	printf("node2 value == [%d]\n", node2->value);
-	printf("node3 value == [%d]\n", node3->value);
-	node->next = node2;
-	node2->before = node;
-	node2->next = node3;
-	node3->before = node2;
-	node->before = node3;
-	node3->next = node;
-
-	t_dlst	*ptr = node;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	ptr = ptr->next;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	ptr = ptr->next;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	ptr = ptr->next;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	ptr = ptr->next;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	ptr = ptr->before;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	ptr = ptr->before;
-	printf("ptr's node value == [%d]\n", ptr->value);
-	return (0);
 
 }

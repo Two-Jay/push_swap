@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:27:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/20 14:18:41 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 09:46:32 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,71 @@
 #include "../../include/dlst.h"
 #include "../../libft/libft.h"
 
-int ft_isdigit_C(char *arg)
+int		ft_isdigit_C(char *target)
 {
-	if (!arg)
-		return (EXIT_FAILURE);
-	if (*target != '+' && *target != '-')
-		return (EXIT_FAILURE);
-	while(*target)
-	{
-		if (!ft_isalnum(*target))
-			return (EXIT_FAILURE);
-		target++;
-	}
-	return (EXIT_SUCCESS);
-}
-
-// TODO
-// 0. check with ft_isdigit_C
-// 1. ft_atoi with seperatied input;
-// 2. insert with 1 as a value of newnode;
-// 3. free memories of argument as char **data;
-// input : char *
-int		ft_check_and_insert(char **buf)
-{
-	t_dlst	node;
-	int		ix;
-	int		value;
+	int ix;
 
 	ix = 0;
-	while (buf[ix])
+	if (!target)
+		return (EXIT_FAILURE);
+	if (target[0] != '+' && target[0] != '-')
+		return (EXIT_FAILURE);
+	while(target[++ix])
 	{
-		if (ft_isdigit_C(buf[ix]) == EXIT_FAILURE)
+		if (!ft_isalnum(target[ix]))
 			return (EXIT_FAILURE);
-		value = ft_atoi(buf[ix]);
-		node = ft_dlstnew(value);	
-		if (// insert newnode to Stack B here and check return value for error handling)
-			return (EXIT_FAILURE);
-		free(buf[ix++]);
+		ix++;
 	}
-	free(buf[ix]);
-	free(buf);
 	return (EXIT_SUCCESS);
 }
 
-int		ft_validate_params(int argc, char **argv)
+int		ft_check_dup(t_stack *stack, t_dlst *node)
 {
-	char	**buf;
-	int		arg_cnt;
-
-	arg_cnt = 0;
-	while (arg_cnt + 1 < argc)
+	int ix;
+	t_dlst	*ptr;
+	
+	ix = 0;
+	if (!stack || !node)
+		return (EXIT_FAILURE);
+	while (ix < stack->size)
 	{
-		buf = ft_split(++argv[arg_cnt], ' ');
-		if (!result || ft_check_and_insert(buf) == EXIT_FAILURE)
+		ptr = stack->top;
+		if (node->value == ptr->value)
 			return (EXIT_FAILURE);
-		arg_cnt++;
+		else
+			ptr = ptr->next;
+		ix++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int		ft_dlst_putidx(t_stack *stack, t_dlst *node)
+{
+	if (!stack || !node)
+		return (EXIT_FAILURE);
+	node->idx = stack->size + 1;
+	return (EXIT_SUCCESS);
+}
+
+int		ft_check_and_insert(char **argv, int argc, t_bucket *bucket)
+{
+	t_dlst		*node;
+	int			ix;
+	long long	value;
+
+	ix = 1;
+	while (argv[ix])
+	{
+		if (ft_isdigit_C(argv[ix]) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
+		value = ft_atoi(argv[ix]);
+		if (value > INT_MAX || value < INT_MIN)
+			return (EXIT_FAILURE);
+		node = ft_dlstnew((int)value);
+		if (ft_check_dup(bucket->B, node)
+			|| ft_dlst_putidx(bucket->B, node) 
+			|| ft_dlstadd_front(bucket->B, node))
+				return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }

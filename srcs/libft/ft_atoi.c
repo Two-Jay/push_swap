@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 21:45:10 by jekim             #+#    #+#             */
-/*   Updated: 2021/01/17 17:33:51 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/19 15:13:04 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_isspace(char ch)
 			|| ch == '\f' || ch == '\r');
 }
 
-int			ft_atoi(const char *nptr)
+long long	ft_atoi(const char *nptr)
 {
 	long long	nbr;
 	int			sign;
@@ -40,3 +40,6 @@ int			ft_atoi(const char *nptr)
 	}
 	return (sign * nbr);
 }
+
+
+// you must validate the return value if it exceed the int type range;

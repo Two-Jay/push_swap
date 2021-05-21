@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:01:49 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/20 14:11:18 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 09:46:58 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h> // for test;
 #include <unistd.h>
 #include <stdlib.h>
+#include <limits.h>
 
 # define TRUE 1
 # define FALSE 0

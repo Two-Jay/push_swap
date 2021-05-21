@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:01:42 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/20 14:18:41 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 09:46:39 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ t_bucket	*ft_init_bucket(void)
 	
 	bucket = (t_bucket *)ft_calloc(1, sizeof(t_bucket));
 	if (!bucket)
-		return (ft_handle_stderr("bucket init error in _init_bucket_\n");
+		return (ft_handle_stderr("bucket init error in _init_bucket_\n"));
 	A = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	B = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (!A && !B)
-		return (ft_handle_stderr("stack init error in _init_bucket_\n");
+		return (ft_handle_stderr("stack init error in _init_bucket_\n"));
 	bucket->A = A;
 	bucket->B = B;
 	return (bucket);
@@ -42,12 +42,12 @@ t_bucket	*ft_init_bucket(void)
 int main(int argc, char **argv)
 {
 	t_bucket *bucket;
-
-	if (ft_validate_params(argc, argv))
-		return (ft_handle_stderr("params validation error"));
+	
 	bucket = ft_init_bucket();
 	if (bucket == EXIT_FAILURE)
-		return (1);
+		return (EXIT_FAILURE);
+	if (ft_check_and_insert(argc, argv, bucket))
+		return (ft_handle_stderr("params validation error"));
 	//elements check
 }
 
