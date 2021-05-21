@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 16:26:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 20:09:27 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 20:26:49 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_bucket	*ft_init_bucket(void)
 	b = (t_stack *)calloc(1, sizeof(t_stack));
 	if (!a || !b)
 		return (ft_handle_stderr("stack init error in _init_bucket_\n"));
-	bucket->A = a;
-	bucket->B = b;
+	bucket->a = a;
+	bucket->b = b;
 	return (bucket);
 }
