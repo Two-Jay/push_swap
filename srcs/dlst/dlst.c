@@ -6,18 +6,17 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 19:53:12 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 20:08:24 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 #include "../../include/dlst.h"
 
-// ok
 t_dlst	*ft_dlstnew(int value)
 {
 	t_dlst	*node;
-	
+
 	node = (t_dlst *)malloc(sizeof(t_dlst));
 	if (!node)
 		return (NULL);
@@ -30,12 +29,11 @@ t_dlst	*ft_dlstnew(int value)
 	return (node);
 }
 
-//ok
-int				ft_dlstadd_front(t_stack *stack, int value)
+int		ft_dlstadd_front(t_stack *stack, int value)
 {
-	t_dlst *node;
-	t_dlst *tmp;
-	
+	t_dlst	*node;
+	t_dlst	*tmp;
+
 	node = ft_dlstnew(value);
 	if (!node)
 		return (EXIT_FAILURE);
@@ -60,12 +58,11 @@ int				ft_dlstadd_front(t_stack *stack, int value)
 	return (EXIT_SUCCESS);
 }
 
-//ok
-int				ft_dlstadd_back(t_stack *stack, int value)
+int		ft_dlstadd_back(t_stack *stack, int value)
 {
-	t_dlst *node;
-	t_dlst *tmp;
-	
+	t_dlst	*node;
+	t_dlst	*tmp;
+
 	node = ft_dlstnew(value);
 	if (!node)
 		return (EXIT_FAILURE);
@@ -90,11 +87,10 @@ int				ft_dlstadd_back(t_stack *stack, int value)
 	return (EXIT_SUCCESS);
 }
 
-//ok
-t_dlst			*ft_dlstpop_front(t_stack *stack)
+t_dlst	*ft_dlstpop_front(t_stack *stack)
 {
-	t_dlst *ret;
-	t_dlst *newtop;
+	t_dlst	*ret;
+	t_dlst	*newtop;
 
 	if (!stack || stack->size == 0)
 		return (NULL);
@@ -105,8 +101,6 @@ t_dlst			*ft_dlstpop_front(t_stack *stack)
 		ret->before = NULL;
 		stack->top = NULL;
 		stack->bottom = NULL;
-		stack->size--;
-		return (ret);
 	}
 	else
 	{
@@ -116,16 +110,15 @@ t_dlst			*ft_dlstpop_front(t_stack *stack)
 		newtop->before = stack->bottom;
 		ret->next = NULL;
 		ret->before = NULL;
-		stack->size--;
-		return (ret);
 	}
+	stack->size--;
+	return (ret);
 }
 
-// ok
-t_dlst			*ft_dlstpop_back(t_stack *stack)
+t_dlst	*ft_dlstpop_back(t_stack *stack)
 {
-	t_dlst *ret;
-	t_dlst *newbottom;
+	t_dlst	*ret;
+	t_dlst	*newbottom;
 
 	if (!stack || stack->size == 0)
 		return (NULL);
@@ -136,8 +129,6 @@ t_dlst			*ft_dlstpop_back(t_stack *stack)
 		ret->before = NULL;
 		stack->top = NULL;
 		stack->bottom = NULL;
-		stack->size--;
-		return (ret);
 	}
 	else
 	{
@@ -147,79 +138,7 @@ t_dlst			*ft_dlstpop_back(t_stack *stack)
 		newbottom->next = stack->top;
 		ret->next = NULL;
 		ret->before = NULL;
-		stack->size--;
-		return (ret);
 	}
-}
-
-// ok
-t_dlst			*ft_dlstnext(t_dlst *node, unsigned int step)
-{
-	int		ix;
-	t_dlst	*ptr;
-	
-	ix = 0;
-	ptr = node;
-	while (ptr->next && ix < step)
-	{
-		ptr = ptr->next;
-		ix++;
-	}
-	return (ptr);
-}
-
-//ok
-t_dlst			*ft_dlstback(t_dlst *node, unsigned int step)
-{
-	int		ix;
-	t_dlst	*ptr;
-	
-	ix = 0;
-	ptr = node;
-	while (ptr->before && ix < step)
-	{
-		ptr = ptr->before;
-		ix++;
-	}
-	return (ptr);
-}
-
-//ok
-t_bucket	*ft_init_bucket(void)
-{
-	t_bucket 	*bucket;
-	t_stack		*A;
-	t_stack		*B;
-	
-	bucket = (t_bucket *)calloc(1, sizeof(t_bucket));
-	if (!bucket)
-		return (NULL);
-		//return (ft_handle_stderr("bucket init error in _init_bucket_\n"));
-	A = (t_stack *)calloc(1, sizeof(t_stack));
-	B = (t_stack *)calloc(1, sizeof(t_stack));
-	if (!A || !B)
-		return (NULL);
-		//return (ft_handle_stderr("stack init error in _init_bucket_\n"));
-	bucket->A = A;
-	bucket->B = B;
-	return (bucket);
-}
-
-//ok
-int ft_dlstprint(t_stack *stack)
-{
-	int		ix;
-	t_dlst	*ptr;
-
-	ix = 0;
-	if (!stack)
-		return (EXIT_FAILURE);
-	ptr = stack->top;
-	while (ix < stack->size)
-	{
-		printf("%d번째 노드 value == [%d]\n", ix, ptr->value);
-		ptr = ptr->next;
-		ix++;
-	}
-	return (EXIT_SUCCESS);
+	stack->size--;
+	return (ret);
 }
