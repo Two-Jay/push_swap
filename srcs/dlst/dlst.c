@@ -6,83 +6,119 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 15:09:15 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 19:26:28 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 #include "../../include/dlst.h"
 
-int				ft_dlstadd_front(t_stack *stack, t_dlst *node)
+// ok
+t_dlst	*ft_dlstnew(int value)
 {
-	t_dlst *tmp;
-
-	tmp = stack->top;
-	if (!stack || !node)
-		return (EXIT_FAILURE);
-	node->next = tmp;
-	node->before = stack->bottom;
-	stack->bottom->next = node;
-	stack->top = node;
-	tmp->before = node;
-	stack->size += 1;
-	return (EXIT_SUCCESS);
-}
-
-int				ft_dlstadd_back(t_stack *stack, t_dlst *node)
-{
-	t_dlst *tmp;
-
-	tmp = stack->bottom;
-	if (!stack || !node)
-		return (EXIT_FAILURE);
-	node->before = tmp;
-	node->next = stack->top;
-	stack->top->before = node;
-	stack->bottom = node;
-	tmp->next = node;
-	stack->size += 1;
-	return (EXIT_SUCCESS);
-}
-
-unsigned int	ft_dlst_idxof(t_stack *stack, int target)
-{
-	int ix;
-	t_dlst	*ptr;
+	t_dlst	*node;
 	
-	if (!stack)
-		return (-1);
-	ix = 0;
-	ptr = stack->top;
-	while (ptr && ix < stack->size)
-	{
-		if (ptr->value == target)
-			return (ix);
-		else
-		{
-			ptr = ptr->next;
-			ix++;
-		}
-	}
-	return (-1);
+	node = (t_dlst *)malloc(sizeof(t_dlst));
+	if (!node)
+		return (NULL);
+	if (!value)
+		node->value = 0;
+	else
+		node->value = value;
+	node->next = NULL;
+	node->before = NULL;
+	return (node);
 }
 
+//ok
+int				ft_dlstadd_front(t_stack *stack, int value)
+{
+	t_dlst *node;
+	t_dlst *tmp;
+	
+	node = ft_dlstnew(value);
+	if (!node)
+		return (EXIT_FAILURE);
+	if (stack->size == 0)
+	{
+		stack->top = node;
+		stack->bottom = node;
+		node->next = node;
+		node->before = node;
+		stack->size++;
+	}
+	else
+	{
+		tmp = stack->top;
+		stack->top = node;
+		stack->bottom->next = node;
+		node->next = tmp;
+		tmp->before = node;
+		node->before = stack->bottom;
+		stack->size++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+//ok
+int				ft_dlstadd_back(t_stack *stack, int value)
+{
+	t_dlst *node;
+	t_dlst *tmp;
+	
+	node = ft_dlstnew(value);
+	if (!node)
+		return (EXIT_FAILURE);
+	if (stack->size == 0)
+	{
+		stack->top = node;
+		stack->bottom = node;
+		node->next = node;
+		node->before = node;
+		stack->size++;
+	}
+	else
+	{
+		tmp = stack->bottom;
+		stack->bottom = node;
+		stack->top->before = node;
+		node->next = stack->top;
+		node->before = tmp;
+		tmp->next = node;
+		stack->size++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+//ok
 t_dlst			*ft_dlstpop_front(t_stack *stack)
 {
 	t_dlst *ret;
 	t_dlst *newtop;
-	
+
 	if (!stack || stack->size == 0)
 		return (NULL);
-	ret = stack->top;
-	newtop = stack->top->next;
-	stack->top = newtop;
-	stack->bottom->next = newtop;
-	newtop->before = stack->bottom;
-	ret->next = NULL;
-	ret->before = NULL;
-	stack->size -= 1;
-	return (ret);
+	if (stack->size == 1)
+	{
+		ret = stack->top;
+		ret->next = NULL;
+		ret->before = NULL;
+		stack->top = NULL;
+		stack->bottom = NULL;
+		stack->size--;
+		return (ret);
+	}
+	else
+	{
+		ret = stack->top;
+		newtop = stack->top->next;
+		stack->top = newtop;
+		newtop->before = stack->bottom;
+		ret->next = NULL;
+		ret->before = NULL;
+		stack->size--;
+		return (ret);
+	}
 }
 
 t_dlst			*ft_dlstpop_back(t_stack *stack)
@@ -133,23 +169,7 @@ t_dlst			*ft_dlstback(t_dlst *node, unsigned int step)
 	return (ptr);
 }
 
-// ok
-t_dlst	*ft_dlstnew(int value)
-{
-	t_dlst	*node;
-	
-	node = (t_dlst *)malloc(sizeof(t_dlst));
-	if (!node)
-		return (NULL);
-	if (!value)
-		node->value = 0;
-	else
-		node->value = value;
-	node->next = NULL;
-	node->before = NULL;
-	return (node);
-}
-
+//ok
 t_bucket	*ft_init_bucket(void)
 {
 	t_bucket 	*bucket;
@@ -170,29 +190,35 @@ t_bucket	*ft_init_bucket(void)
 	return (bucket);
 }
 
+//ok
+int ft_dlstprint(t_stack *stack)
+{
+	int		ix;
+	t_dlst	*ptr;
+
+	ix = 0;
+	if (!stack)
+		return (EXIT_FAILURE);
+	ptr = stack->top;
+	while (ix < stack->size)
+	{
+		printf("%d번째 노드 value == [%d]\n", ix, ptr->value);
+		ptr = ptr->next;
+		ix++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int main(void)
 {
 	t_bucket *bucket = ft_init_bucket();
-	t_dlst	*node = ft_dlstnew(3);
-	
-	bucket->A->top = node;
-	printf("node value == [%d]\n", bucket->A->top->value);
-	return (0);
-}
+	t_dlst	*node;
+	int value = 0;
 
-
-int				ft_dlstadd_front(t_stack *stack, t_dlst *node)
-{
-	t_dlst *tmp;
-
-	tmp = stack->top;
-	if (!stack || !node)
-		return (EXIT_FAILURE);
-	node->next = tmp;
-	node->before = stack->bottom;
-	stack->bottom->next = node;
-	stack->top = node;
-	tmp->before = node;
-	stack->size += 1;
+	ft_dlstadd_back(bucket->A, value++);
+	ft_dlstadd_back(bucket->A, value++);
+	ft_dlstadd_back(bucket->A, value);
+	ft_dlstprint(bucket->A);
 	return (EXIT_SUCCESS);
 }
+
