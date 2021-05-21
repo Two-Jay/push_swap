@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/20 16:53:46 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/20 17:48:48 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,9 @@ int main(void)
 	t_dlst	*node4 = ft_dlstnew(9);
 	t_bucket *bucket = ft_init_bucket();	
 
-
+	printf("bucket->A pointer == [%p]\n", bucket->A);
+	printf("bucket->A->top pointer == [%p]\n", bucket->A->top);
+	printf("bucket->A->bottom pointer == [%p]\n", bucket->A->bottom);
+	printf("bucket->A->size pointer == [%zu]\n", bucket->A->size);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:01:42 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/19 18:46:47 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/20 17:48:39 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ t_bucket	*ft_init_bucket(void)
 	return (bucket);
 }
 
+t_stack		*ft_init_stack(void)
+{
+	t_stack	*stack;
+	
+	stack =(t_stack *)ft_calloc(1, sizeof(t_stack));
+	
+	//
+}
+
 int main(int argc, char **argv)
 {
 	t_bucket *bucket;
@@ -49,10 +58,3 @@ int main(int argc, char **argv)
 		return (ft_handle_stderr("params validation error"));
 	//elements check
 }
-
-// argc == 1
-// stdio에서 아무것도 안나와야함 -> 그냥 exit;
-
-// 1 2 "345" => 1 2 345
-// 1 2 "3 45" => 1 2 3 45
-// 1 2 "-1-2" => Error

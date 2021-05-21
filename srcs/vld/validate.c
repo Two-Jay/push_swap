@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:27:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/19 17:20:24 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/20 17:22:29 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int		ft_dlst_putidx(t_stack *stack, t_dlst *node)
 	return (EXIT_SUCCESS);
 }
 
+// TODO
+// ft_dlst_putdix, ft_dlstadd_front 구현
+// 전체 테스트
 int		ft_check_and_insert(char **argv, int argc, t_bucket *bucket)
 {
 	t_dlst		*node;
