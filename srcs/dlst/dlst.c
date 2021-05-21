@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:48 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/21 15:09:15 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,6 @@ t_dlst	*ft_dlstnew(int value)
 	return (node);
 }
 
-
 t_bucket	*ft_init_bucket(void)
 {
 	t_bucket 	*bucket;
@@ -173,16 +172,27 @@ t_bucket	*ft_init_bucket(void)
 
 int main(void)
 {
-	t_dlst	*node0 = ft_dlstnew(1);
-	t_dlst	*node1 = ft_dlstnew(3);
-	t_dlst	*node2 = ft_dlstnew(5);
-	t_dlst	*node3 = ft_dlstnew(7);
-	t_dlst	*node4 = ft_dlstnew(9);
-	t_bucket *bucket = ft_init_bucket();	
-
-	printf("bucket->A pointer == [%p]\n", bucket->A);
-	printf("bucket->A->top pointer == [%p]\n", bucket->A->top);
-	printf("bucket->A->bottom pointer == [%p]\n", bucket->A->bottom);
-	printf("bucket->A->size pointer == [%zu]\n", bucket->A->size);
+	t_bucket *bucket = ft_init_bucket();
+	t_dlst	*node = ft_dlstnew(3);
+	
+	bucket->A->top = node;
+	printf("node value == [%d]\n", bucket->A->top->value);
 	return (0);
+}
+
+
+int				ft_dlstadd_front(t_stack *stack, t_dlst *node)
+{
+	t_dlst *tmp;
+
+	tmp = stack->top;
+	if (!stack || !node)
+		return (EXIT_FAILURE);
+	node->next = tmp;
+	node->before = stack->bottom;
+	stack->bottom->next = node;
+	stack->top = node;
+	tmp->before = node;
+	stack->size += 1;
+	return (EXIT_SUCCESS);
 }
