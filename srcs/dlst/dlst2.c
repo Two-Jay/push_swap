@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 20:02:44 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 20:04:43 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/23 00:10:48 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,48 @@ int		ft_dlstprint(t_stack *stack)
 		ptr = ptr->next;
 		ix++;
 	}
+	return (EXIT_SUCCESS);
+}
+
+int		ft_dlstswap_next(t_dlst *node)
+{
+	t_dlst *ptr_next;
+	
+	ptr_next = node->next;
+	node->before->next = ptr_next;
+	
+}
+
+
+o
+1
+2
+o
+
+
+
+
+int		ft_dlstdel_front(t_stack *stack)
+{
+	t_dlst	*ptr;
+	int		value;
+	
+	if (stack->size == 0)
+		return ;
+	ptr = stack->top->next;
+	value = stack->top->value;
+	free(stack->top);
+	stack->top = ptr;
+	stack->size--;
+	return (value);
+}
+
+int		ft_dlstclear(t_stack *stack)
+{
+	int ix;
+
+	ix = 0;
+	while (ix < stack->size)
+		ft_dlstdel_front(stack);
 	return (EXIT_SUCCESS);
 }

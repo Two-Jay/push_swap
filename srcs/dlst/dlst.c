@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 20:08:24 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/22 21:16:34 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,10 @@ t_dlst	*ft_dlstnew(int value)
 	return (node);
 }
 
-int		ft_dlstadd_front(t_stack *stack, int value)
+int		ft_dlstadd_front(t_stack *stack, t_dlst *node)
 {
-	t_dlst	*node;
 	t_dlst	*tmp;
 
-	node = ft_dlstnew(value);
 	if (!node)
 		return (EXIT_FAILURE);
 	if (stack->size == 0)
@@ -58,12 +56,10 @@ int		ft_dlstadd_front(t_stack *stack, int value)
 	return (EXIT_SUCCESS);
 }
 
-int		ft_dlstadd_back(t_stack *stack, int value)
+int		ft_dlstadd_back(t_stack *stack, t_dlst *node)
 {
-	t_dlst	*node;
 	t_dlst	*tmp;
 
-	node = ft_dlstnew(value);
 	if (!node)
 		return (EXIT_FAILURE);
 	if (stack->size == 0)

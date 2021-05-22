@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strexit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 12:01:49 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/22 21:03:02 by jekim            ###   ########.fr       */
+/*   Created: 2021/05/22 18:34:15 by jekim             #+#    #+#             */
+/*   Updated: 2021/05/22 18:35:59 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-#include <stdio.h> // for test;
-#include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
-
-# define TRUE 1
-# define FALSE 0
-
-int	ft_validate_params(int argc, char **argv);
-int ft_print_stderr(char *errstr);
-
-#endif
+int	ft_strexit(char *str)
+{
+	ft_putendl(str, 1);
+	return (0);
+}

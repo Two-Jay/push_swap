@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 16:26:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 20:26:49 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/22 21:01:21 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "../../include/push_swap.h"
 #include "../libft/libft.h"
 
-t_bucket	*ft_init_bucket(void)
+
+t_bucket	*ft_bucketnew(void)
 {
 	t_bucket	*bucket;
 	t_stack		*a;

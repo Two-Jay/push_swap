@@ -1,52 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:01:42 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 15:09:18 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/22 18:41:04 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/push_swap.h"
-#include "./include/dlst.h"
+#include "../include/push_swap.h"
+#include "../include/dlst.h"
 
-t_bucket	*ft_init_bucket(void)
-{
-	t_bucket 	*bucket;
-	t_stack		*A;
-	t_stack		*B;
-	
-	bucket = (t_bucket *)ft_calloc(1, sizeof(t_bucket));
-	if (!bucket)
-		return (ft_handle_stderr("bucket init error in _init_bucket_\n"));
-	A = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	B = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	if (!A && !B)
-		return (ft_handle_stderr("stack init error in _init_bucket_\n"));
-	bucket->A = A;
-	bucket->B = B;
-	return (bucket);
-}
-
-t_stack		*ft_init_stack(void)
-{
-	t_stack	*stack;
-	
-	stack =(t_stack *)ft_calloc(1, sizeof(t_stack));
-	
-	//
+void 	ft_init_storage(t_bucket *bucket)
+{	
+	bucket = ft_bucketnew();
+	if (bucket == EXIT_FAILURE)
+		ft_putendl("Error");	
 }
 
 int main(int argc, char **argv)
 {
 	t_bucket *bucket;
 	
-	bucket = ft_init_bucket();
-	if (bucket == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+	ft_init_storage(bucket);
 	if (ft_check_and_insert(argc, argv, bucket))
 		return (ft_handle_stderr("params validation error"));
 	//elements check
