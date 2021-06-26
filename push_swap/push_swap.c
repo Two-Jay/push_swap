@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 09:27:50 by jekim             #+#    #+#             */
-/*   Updated: 2021/01/12 09:31:51 by jekim            ###   ########.fr       */
+/*   Created: 2021/05/18 12:01:42 by jekim             #+#    #+#             */
+/*   Updated: 2021/06/26 21:00:25 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void 	ft_init_storage(t_bucket *bucket)
+{	
+	bucket = ft_bucketnew();
+	if (bucket == EXIT_FAILURE)
+		ft_putendl("Error");
+}
+
+int main(int argc, char **argv)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	t_bucket *bucket;
+	
+	ft_init_storage(bucket);
 }

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:27:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/22 18:40:43 by jekim            ###   ########.fr       */
+/*   Updated: 2021/06/26 19:37:15 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
-#include "../../include/dlst.h"
-#include "../../libft/libft.h"
+#include "push_swap.h"
 
 int		ft_isdigit_C(char *target)
 {

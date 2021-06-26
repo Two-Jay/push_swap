@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 09:59:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/01/21 04:33:02 by jekim            ###   ########.fr       */
+/*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
+/*   Updated: 2021/06/26 21:00:16 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./checker.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+
+void 	ft_init_storage(t_bucket *bucket)
+{	
+	bucket = ft_bucketnew();
+	if (bucket == EXIT_FAILURE)
+		ft_putendl("Error");
+}
+
+int main(int argc, char **argv)
 {
-	t_list	*temp;
+    t_bucket *bucket;
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
-	}
+    ft_init_bucketnew(bucket);
 }

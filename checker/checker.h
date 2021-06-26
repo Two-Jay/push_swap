@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 06:56:26 by jekim             #+#    #+#             */
-/*   Updated: 2021/01/18 06:56:28 by jekim            ###   ########.fr       */
+/*   Created: 2021/06/26 19:37:26 by jekim             #+#    #+#             */
+/*   Updated: 2021/06/26 19:54:39 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	char endl;
+#include <unistd.h>
+#include <stdlib.h>
+#include "../libft/libft.h"
+#include "../libps/libps.h"
 
-	endl = '\n';
-	if (fd < 0)
-		return ;
-	if (s)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, &endl, 1);
-	}
-}
+
+
+#endif CHECKER_H
