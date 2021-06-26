@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_dlstswap.c                                      :+:      :+:    :+:   */
+/*   ps_inst_pa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/25 23:25:49 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/26 19:17:31 by jekim            ###   ########.fr       */
+/*   Created: 2021/06/26 19:22:14 by jekim             #+#    #+#             */
+/*   Updated: 2021/06/26 19:33:01 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
 
-void	ps_dlstswap_next(t_dlst *node)
+void	ps_inst_pa(t_bucket *bucket)
 {
-	t_dlst *ptr_next;
+	t_dlst	*node;
 	
-	ptr_next = node->next;
-	node->before->next = ptr_next;
-	
+	node = ps_dlstpop_front(bucket->b);
+	ps_dlstadd_front(bucket->a, node);
+	bucket->result++;
 }

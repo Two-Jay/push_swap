@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:20:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/25 23:26:06 by jekim            ###   ########.fr       */
+/*   Updated: 2021/06/26 19:16:38 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_dlst	*ps_dlstnext(t_dlst *node, unsigned int step)
 {
-	int		ix;
-	t_dlst	*ptr;
+	unsigned int	ix;
+	t_dlst			*ptr;
 
 	ix = 0;
 	ptr = node;

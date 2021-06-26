@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:26:47 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/25 23:27:07 by jekim            ###   ########.fr       */
+/*   Updated: 2021/06/26 19:16:00 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ps_dlstdel_front(t_stack *stack)
 	int		value;
 	
 	if (stack->size == 0)
-		return ;
+		return (0);
 	ptr = stack->top->next;
 	value = stack->top->value;
 	free(stack->top);
