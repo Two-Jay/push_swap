@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:10:22 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/21 09:46:13 by jekim            ###   ########.fr       */
+/*   Updated: 2021/05/23 17:57:13 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int				ft_dlstadd_front(t_stack *stack, t_dlst *node)
 {
 	t_dlst *tmp;
 
-	tmp = stack->top;
 	if (!stack || !node)
 		return (EXIT_FAILURE);
+	tmp = stack->top;
+	if (!tmp)
+		tmp = node;
 	node->next = tmp;
 	node->before = stack->bottom;
 	stack->bottom->next = node;
@@ -173,12 +175,7 @@ t_bucket	*ft_init_bucket(void)
 
 int main(void)
 {
-	t_dlst	*node0 = ft_dlstnew(1);
-	t_dlst	*node1 = ft_dlstnew(3);
-	t_dlst	*node2 = ft_dlstnew(5);
-	t_dlst	*node3 = ft_dlstnew(7);
-	t_dlst	*node4 = ft_dlstnew(9);
 	t_bucket *bucket = ft_init_bucket();	
-
+	
 
 }
