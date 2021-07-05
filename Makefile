@@ -6,7 +6,7 @@
 #    By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/05 10:57:07 by jekim            ###   ########.fr        #
+#    Updated: 2021/07/05 11:12:25 by jekim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ BNAME		=	checker
 CC			=	gcc
 CCFLAG		=	-Wall -Wextra -Werror
 SNTZ		=	-g3 -fsanitize=address
-LIB			=	-lft -L$(LIBFT_PATH) -lps -L$(LIBPS_PATH)
 INCLUDE		=	-I$(INC_DIR) -I$(LIBFT_PATH) -I$(LIBPS_PATH)
 
 LIBFT		=	$(LIBFT_PATH)libft.a
@@ -43,35 +42,38 @@ PS_OBJ		=	$(addprefix $(OBJ_DIR), $(PS_OBJ_FILE))
 CK_OBJ		=	$(addprefix $(OBJ_DIR), $(CK_OBJ_FILE))
 
 
-all: $(NAME) $(BNAME)
+all			:	lib	$(NAME)
 
 $(NAME)		:	$(PS_OBJ)
-	@make -C $(LIBFT_PATH)
-	@make -C $(LIBPS_PATH)
-	@$(CC) $(CCFLAG) $(PS_OBJ) $(INCLUDE) $(LIB) -o $(NAME)
+	@$(CC) $(CCFLAG) $(PS_OBJ) $(INCLUDE) $(LIBFT) $(LIBPS) -o $(NAME)
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
+$(OBJ_PATH)%.o : $(PS_FILE_DIR)%.c $(CK_FILE_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CCFLAG) $< -o $@
+
+bonus		:	$(MKLIB) $(BNAME)
+
 $(BNAME)	:	$(CK_OBJ)
-	@make -C $(LIBFT_PATH)
-	@make -C $(LIBPS_PATH)
-	@$(CC) $(CCFLAG) $(CK_OBJ) $(INCLUDE) $(LIB) -o $(BNAME)
+	@$(CC) $(CCFLAG) $(CK_OBJ) $(INCLUDE) $(LIBFT) $(LIBPS) -o $(BNAME)
 	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
 
-$(OBJ_PATH)/%.o : $(PS_FILE_DIR)/%.c $(CK_FILE_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CCFLAG) -c $< -o $@
+lib			:
+	@make -C $(LIBFT_PATH)
+	@make -C $(LIBPS_PATH)
 
-clean:
-	@make clean -C $(LIB_PATH)
-	@rm -rf $(OBJ)
-	@rm -rf $(OBJ2)
+clean		:
+	@make -C $(LIBFT_PATH) clean
+	@make -C $(LIBPS_PATH) clean
+	@rm -rf $(PS_OBJ) $(CK_OBJ)
 	@echo "\033[0;91m* $(NAME) and $(BNAME) object files were deleted* \033[0m"
 
-fclean: clean
-	@make fclean -C $(LIB_PATH)
-	@rm -f $(NAME) $(NAME2)
+fclean		:	clean
+	@make -C $(LIBFT_PATH) fclean
+	@make -C $(LIBPS_PATH) fclean
+	@rm -f $(NAME) $(BNAME)
 	@echo "\033[0;91m* $(NAME) and $(BNAME) were deleted* \033[0m"
 
-re: fclean all
+re			:	fclean all
 
 .PHONY: all, clean, fclean, re
