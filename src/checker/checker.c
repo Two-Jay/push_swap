@@ -6,11 +6,11 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/05 10:49:52 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/05 11:28:22 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/checker.h"
+#include "../../includes/checker.h"
 
 static void 	ft_init_storage(t_bucket *bucket)
 {	

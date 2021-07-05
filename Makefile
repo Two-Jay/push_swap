@@ -6,7 +6,7 @@
 #    By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/05 11:12:25 by jekim            ###   ########.fr        #
+#    Updated: 2021/07/05 11:42:58 by jekim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CC			=	gcc
 CCFLAG		=	-Wall -Wextra -Werror
 SNTZ		=	-g3 -fsanitize=address
 INCLUDE		=	-I$(INC_DIR) -I$(LIBFT_PATH) -I$(LIBPS_PATH)
+LIB			=	-lft -L$(LIBFT_PATH) -lps -L$(LIBPS_PATH)
+LIB2		= 	$(LIBFT) $(LIBPS)
 
 LIBFT		=	$(LIBFT_PATH)libft.a
 LIBPS		=	$(LIBPS_PATH)libps.a
@@ -42,25 +44,29 @@ PS_OBJ		=	$(addprefix $(OBJ_DIR), $(PS_OBJ_FILE))
 CK_OBJ		=	$(addprefix $(OBJ_DIR), $(CK_OBJ_FILE))
 
 
-all			:	lib	$(NAME)
+all			:	mklib $(NAME)
 
 $(NAME)		:	$(PS_OBJ)
-	@$(CC) $(CCFLAG) $(PS_OBJ) $(INCLUDE) $(LIBFT) $(LIBPS) -o $(NAME)
+	@$(CC) $(CCFLAG) $(PS_OBJ) $(LIB2) $(INCLUDE) -o $(NAME)
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
-$(OBJ_PATH)%.o : $(PS_FILE_DIR)%.c $(CK_FILE_DIR)%.c
+$(OBJ_PATH)%.o : $(PS_SRC)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CCFLAG) $< -o $@
+	@$(CC) $(CCFLAG) $(LIB2) $(INCLUDE) $< -o $@
 
-bonus		:	$(MKLIB) $(BNAME)
-
-$(BNAME)	:	$(CK_OBJ)
-	@$(CC) $(CCFLAG) $(CK_OBJ) $(INCLUDE) $(LIBFT) $(LIBPS) -o $(BNAME)
-	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
-
-lib			:
+mklib			:
 	@make -C $(LIBFT_PATH)
 	@make -C $(LIBPS_PATH)
+
+bonus		:	mklib $(BNAME)
+
+$(BNAME)	:	$(CK_OBJ)
+	@$(CC) $(CCFLAG) $(CK_OBJ) $(LIB2) $(INCLUDE) -o $(BNAME)
+	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
+
+$(OBJ_PATH)%.o : $(CK_SRC)
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $< -o $@
 
 clean		:
 	@make -C $(LIBFT_PATH) clean

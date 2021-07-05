@@ -6,7 +6,7 @@
 /*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:37:26 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/05 09:27:21 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/05 11:28:49 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,4 @@
 #include "../lib/libft/libft.h"
 #include "../lib/libps/libps.h"
 
-
-
-#endif PUSH_SWAP_H
+#endif
