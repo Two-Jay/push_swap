@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/05 17:21:34 by jekim            ###   ########.fr        #
+#    Updated: 2021/07/05 18:45:00 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,17 +47,18 @@ CK_OBJ		=	$(addprefix $(OBJ_DIR), $(CK_OBJ_FILE))
 all			:	mklib $(NAME)
 
 $(NAME)		:	$(PS_OBJ)
-	@gcc -Wall -Wextra -Werror -L./lib/libft -L./lib/libps -I./includes -I./lib/libft -I./lib/libps ./obj/push_swap.o -o push_swap
+	$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $(PS_OBJ) -o $(NAME)
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
-$(PS_OBJ) : $(PS_SRC)
+$(PS_OBJ) : $(PS_SRC) | $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $< -o $@
+	$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 	@echo "\033[0;92m* $(NAME) object file was created *\033[0m"
 
 mklib			:
 	@make -C $(LIBFT_DIR)
 	@make -C $(LIBPS_DIR)
+
 
 bonus		:	mklib $(BNAME)
 
@@ -67,7 +68,8 @@ $(BNAME)	:	$(CK_OBJ)
 
 $(OBJ_DIR)%.o : $(CK_SRC)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $< -o $@
+	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
+
 
 clean		:
 	@make -C $(LIBFT_DIR) clean
@@ -75,11 +77,13 @@ clean		:
 	@rm -rf $(PS_OBJ) $(CK_OBJ)
 	@echo "\033[0;91m* $(NAME) and $(BNAME) object files were deleted* \033[0m"
 
+
 fclean		:	clean
 	@make -C $(LIBFT_DIR) fclean
 	@make -C $(LIBPS_DIR) fclean
 	@rm -f $(NAME) $(BNAME)
 	@echo "\033[0;91m* $(NAME) and $(BNAME) were deleted* \033[0m"
+
 
 re			:	fclean all
 
