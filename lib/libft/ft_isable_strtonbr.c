@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_isable_strtonbr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 10:22:50 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/30 23:01:20 by jekim            ###   ########.fr       */
+/*   Created: 2021/07/08 01:38:57 by jekim             #+#    #+#             */
+/*   Updated: 2021/07/08 01:42:51 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+/*
+** if the str is able to convert nbr type (int, long, long long us int...)
+** this function will returns 1, if not, 0.
+*/
+int ft_isable_strtonbr(char *nbr)
 {
-	t_list	*res;
-	t_list	*tmp;
+	int ret;
 
-	if (!lst || !f)
-		return (NULL);
-	res = 0;
-	while (lst)
+	ret = 1;
+    while (*nbr && ft_isspace(*nbr))
+        nbr++;
+    if (*nbr == '-' || *nbr == '+')
+        nbr++;
+	while (*nbr)
 	{
-		tmp = ft_lstnew(f(lst->content));
-		if (!tmp)
-		{
-			ft_lstclear(&res, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&res, tmp);
-		tmp = tmp->next;
-		lst = lst->next;
+		if (!ft_isdigit(*nbr))
+			return (--ret);
+		nbr++;
 	}
-	return (res);
+	return (ret);
 }

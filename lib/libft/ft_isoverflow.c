@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_isoverflow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 10:22:50 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/30 23:01:20 by jekim            ###   ########.fr       */
+/*   Created: 2021/07/08 01:12:55 by jekim             #+#    #+#             */
+/*   Updated: 2021/07/08 01:13:30 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_isoverflow(long long nbr)
 {
-	t_list	*res;
-	t_list	*tmp;
-
-	if (!lst || !f)
-		return (NULL);
-	res = 0;
-	while (lst)
-	{
-		tmp = ft_lstnew(f(lst->content));
-		if (!tmp)
-		{
-			ft_lstclear(&res, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&res, tmp);
-		tmp = tmp->next;
-		lst = lst->next;
-	}
-	return (res);
+	if (nbr > INT_MAX)
+		return (1);
+	else if (nbr < INT_MIN)
+		return (-1);
+	else
+		return (0);
 }

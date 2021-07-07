@@ -6,23 +6,34 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/05 18:56:15 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/06 23:20:12 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void 	ft_init_storage(t_bucket *bucket, int argc, char **argv)
+
+
+int ft_validate_input(int argc, char **argv, int *arr)
 {
-	if (argc <= 1)
-		ft_strerr("Error\n : a few parameters");
-	bucket = ps_bucketnew();
-	if (bucket == NULL)
-		ft_strerr("Error\n");
+	unsigned int ix;
+
+	ix = 1;
+	if (argc == 1)
+		ft_strerr("Error\n : a few parameters\n");
+	while (ix < argc)
+	{
+		if (//lenght check || //atoi-able check)
+			arr[ix - 1] = ft_atoi(argv[ix]);
+		else
+			ft_strerr("Error\n : an invalid parameter exists in the input. \n");
+	}
 }
+
 
 int main(int argc, char **argv)
 {
+	static int *arr_input;
 	t_bucket *bucket;
 
 	write(1, "check push_swap", 16);

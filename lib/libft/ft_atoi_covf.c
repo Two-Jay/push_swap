@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_covf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 21:45:10 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/08 01:14:25 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/08 01:14:45 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+/*
+** return int nbr when the value of nbr is between INTMAX and INTMIN
+** if an overflow occur, return 1 as a value on ovf_flag pointer
+*/
+int	ft_atoi_covf(const char *nptr, int *ovf_flag)
 {
-	int	nbr;
+	long long	nbr;
 	int	sign;
 	int	ix;
 
@@ -28,9 +32,9 @@ int	ft_atoi(const char *nptr)
 	if (nptr[ix] == '-' || nptr[ix] == '+')
 		ix++;
 	while (nptr[ix] && ('0' <= nptr[ix] && nptr[ix] <= '9'))
-	{
-		nbr = (nbr * 10) + (nptr[ix] - '0');
-		ix++;
-	}
-	return (sign * nbr);
+		nbr = (nbr * 10) + (nptr[ix++] - '0');
+	if (ft_isoverflow(nbr))
+		return (++(*ovf_flag));
+	else
+		return ((int)(nbr * sign));
 }

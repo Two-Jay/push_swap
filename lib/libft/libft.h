@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 04:17:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/05/30 03:24:18 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/08 01:39:13 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 # define BUFFER_SIZE 128
-# define OPEN_MAX 256
 
 /*
 ** list struct
@@ -36,6 +36,9 @@ int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
+int					ft_isoverflow(long long nbr);
+int					ft_isable_strtonbr(char *nbr);
+int					ft_isspace(char ch);
 
 /*
 ** put*_fd functions
@@ -48,6 +51,7 @@ void				ft_putstr_fd(char *s, int fd);
 /*
 ** type conversion functions
 */
+int					ft_atoi_covf(const char *nptr, int *ovf_flag);
 char				*ft_itoa(int n);
 int					ft_atoi(const char *nptr);
 
