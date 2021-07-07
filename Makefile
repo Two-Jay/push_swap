@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/05 18:45:00 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/08 02:51:37 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BNAME		=	checker
 
 CC			=	gcc
 CCFLAG		=	-Wall -Wextra -Werror
-SNTZ		=	-g3 -fsanitize=address
+SNTZ		=	-fsanitize=address -g3
 INCLUDE		=	-I$(INC_DIR) -I$(LIBFT_DIR) -I$(LIBPS_DIR)
 LIB			=	-L$(LIBFT_DIR) -L$(LIBPS_DIR) -lft -lps 
 LIB2		= 	$(LIBFT) $(LIBPS)
@@ -70,6 +70,11 @@ $(OBJ_DIR)%.o : $(CK_SRC)
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 
+debug1			:	mklib $(NAME)
+
+$(NAME)		:	$(PS_OBJ)
+	$(CC) $(CCFLAG) $(SNTZ) $(LIB) $(INCLUDE) $(PS_OBJ) -o $(NAME)
+	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
 clean		:
 	@make -C $(LIBFT_DIR) clean
