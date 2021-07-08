@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/08 02:51:37 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/08 16:28:42 by jekim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(NAME)		:	$(PS_OBJ)
 	$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $(PS_OBJ) -o $(NAME)
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
-$(PS_OBJ) : $(PS_SRC) | $(OBJ_DIR)
+$(PS_OBJ) : $(PS_SRC)
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 	@echo "\033[0;92m* $(NAME) object file was created *\033[0m"

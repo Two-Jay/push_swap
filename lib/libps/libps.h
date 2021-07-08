@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libps.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/05 11:34:25 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/08 16:21:39 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct		s_bucket
 {
 	t_stack			*a;
 	t_stack			*b;
+
+	int				*input_arr;
 	size_t			size;
 	int				result;
 }					t_bucket;

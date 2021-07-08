@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:19:13 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/26 19:18:00 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/08 17:50:49 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int		ps_dlstprint(t_stack *stack)
 	ptr = stack->top;
 	while (ix < stack->size)
 	{
-		printf("%zu번째 노드 value == [%d]\n", ix, ptr->value);
+		if (ix == stack->size - 1)
+			printf("%d", ptr->value);
+		else
+			printf("%d ", ptr->value);
 		ptr = ptr->next;
 		ix++;
 	}
