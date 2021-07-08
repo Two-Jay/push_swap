@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/08 16:28:42 by jekim            ###   ########.fr        #
+#    Updated: 2021/07/08 20:57:02 by jekim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ CC			=	gcc
 CCFLAG		=	-Wall -Wextra -Werror
 SNTZ		=	-fsanitize=address -g3
 INCLUDE		=	-I$(INC_DIR) -I$(LIBFT_DIR) -I$(LIBPS_DIR)
-LIB			=	-L$(LIBFT_DIR) -L$(LIBPS_DIR) -lft -lps 
-LIB2		= 	$(LIBFT) $(LIBPS)
+LIB			=	-L$(LIBFT_DIR) -L$(LIBPS_DIR) -lft -lps
 
 LIBPS_DIR	=	./lib/libps/
 LIBFT_DIR	=	./lib/libft/
