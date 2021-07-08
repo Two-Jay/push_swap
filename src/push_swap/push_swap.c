@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/08 19:01:05 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:12:35 by jekim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	fn_insert_node(char *str, int ix, int *err_flag, t_bucket *bucket)
 	node = ps_dlstnew(value);
 	ps_dlstadd_back(bucket->a, node);
 	bucket->input_arr[ix] = value;
+	bucket->size++;
+	bucket->a->size++;
 }
 
 int fn_validate_input(int argc, char **argv, t_bucket *bucket)
