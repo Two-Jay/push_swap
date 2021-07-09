@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:19:13 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/08 12:25:05 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/10 07:33:17 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int		ps_dlstprint(t_stack *stack)
 	if (!stack)
 		return (EXIT_FAILURE);
 	if (stack->size == 0)
-		printf("alarm : the stack is empty")
+		printf("alarm : the stack is empty");
 	ptr = stack->top;
 	while (ix < stack->size)
 	{
-		printf("%zu번째 노드 value == [%d]\n", ix, ptr->value);
+		if (ix == stack->size - 1)
+			printf("%d", ptr->value);
+		else
+			printf("%d ", ptr->value);
 		ptr = ptr->next;
 		ix++;
 	}

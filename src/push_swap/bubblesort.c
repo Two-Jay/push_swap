@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_inst_sa.c                                       :+:      :+:    :+:   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 19:20:44 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 07:32:18 by jekim            ###   ########seoul.kr  */
+/*   Created: 2021/07/08 18:53:38 by jekim             #+#    #+#             */
+/*   Updated: 2021/07/09 13:09:12 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libps.h"
+#include "../../includes/push_swap.h"
 
-void	ps_inst_sa(t_bucket *bucket)
+void fn_swap(int *a, int *b)
 {
-	t_dlst	*ptr1;
-	t_dlst	*ptr2;
+    int tmp;
+    
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
 
-	if (bucket->a->size < 2)
-		return ;
-	ptr1 = bucket->a->top;
-	ptr2 = bucket->a->top->next;
-	bucket->a->top = ptr2;
-	ptr1->before = ptr2;
-	ptr1->next = ptr2->next;
-	ptr2->before = bucket->a->bottom;
-	ptr2->next = ptr1;
-	bucket->result++;
+int fn_bubblesort(int *arr)
+{
+    int ix;
+    int jx;
+
+    while (ix)
+    {
+        while (jx)
+    }
 }

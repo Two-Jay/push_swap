@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/08 02:51:37 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/08 20:57:02 by jekim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ CC			=	gcc
 CCFLAG		=	-Wall -Wextra -Werror
 SNTZ		=	-fsanitize=address -g3
 INCLUDE		=	-I$(INC_DIR) -I$(LIBFT_DIR) -I$(LIBPS_DIR)
-LIB			=	-L$(LIBFT_DIR) -L$(LIBPS_DIR) -lft -lps 
-LIB2		= 	$(LIBFT) $(LIBPS)
+LIB			=	-L$(LIBFT_DIR) -L$(LIBPS_DIR) -lft -lps
 
 LIBPS_DIR	=	./lib/libps/
 LIBFT_DIR	=	./lib/libft/
@@ -50,7 +49,7 @@ $(NAME)		:	$(PS_OBJ)
 	$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $(PS_OBJ) -o $(NAME)
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
-$(PS_OBJ) : $(PS_SRC) | $(OBJ_DIR)
+$(PS_OBJ) : $(PS_SRC)
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 	@echo "\033[0;92m* $(NAME) object file was created *\033[0m"
