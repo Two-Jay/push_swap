@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:27:28 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/26 19:15:40 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/10 08:10:57 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ps_dlstclear(t_stack *stack)
 {
-	size_t ix;
+	int ix;
 
 	ix = 0;
 	while (ix < stack->size)

@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:19:13 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 07:33:17 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/10 08:19:39 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		ps_dlstprint(t_stack *stack)
 {
-	size_t	ix;
+	int	ix;
 	t_dlst	*ptr;
 
 	ix = 0;

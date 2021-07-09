@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:20:44 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 07:32:18 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/10 08:11:43 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	ps_inst_sa(t_bucket *bucket)
 	ptr1->next = ptr2->next;
 	ptr2->before = bucket->a->bottom;
 	ptr2->next = ptr1;
-	bucket->result++;
+	bucket->count++;
 }

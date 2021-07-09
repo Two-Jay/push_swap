@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 07:33:23 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/10 08:06:54 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ typedef struct		s_stack
 	int				size;
 }					t_stack;
 
-typedef struct	s_data
+typedef struct	s_bucket
 {
 	t_stack *a;
 	t_stack *b;
 
 	int *input_arr;
-	int	size_all;
-	int result;
+	int	size;
+	int count;
 }				t_bucket;
 
 // 여기에는 push_swap 프젝에 필요한 더블드 링크드 리스트와 스텍의 정보만 담을 것.
@@ -47,7 +47,7 @@ typedef struct	s_data
 # define TRUE 1
 # define FALSE 0
 
-t_bucket	*ps_bucketnew(void);
+t_bucket	*ps_bucketnew(int arg_len);
 
 int		ps_dlstadd_back(t_stack *stack, t_dlst *node);
 int		ps_dlstadd_front(t_stack *stack, t_dlst *node);
