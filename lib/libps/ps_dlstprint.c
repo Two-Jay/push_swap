@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:19:13 by jekim             #+#    #+#             */
-/*   Updated: 2021/06/26 19:18:00 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/08 12:25:05 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		ps_dlstprint(t_stack *stack)
 	ix = 0;
 	if (!stack)
 		return (EXIT_FAILURE);
+	if (stack->size == 0)
+		printf("alarm : the stack is empty")
 	ptr = stack->top;
 	while (ix < stack->size)
 	{

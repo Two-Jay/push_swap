@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libps.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekim <jekim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/05 11:34:25 by jekim            ###   ########.fr       */
+/*   Updated: 2021/07/08 12:22:35 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,8 @@ typedef struct		s_stack
 	size_t			size;
 }					t_stack;
 
-typedef struct		s_bucket
-{
-	t_stack			*a;
-	t_stack			*b;
-	size_t			size;
-	int				result;
-}					t_bucket;
+// 여기에는 push_swap 프젝에 필요한 더블드 링크드 리스트와 스텍의 정보만 담을 것.
+// 이후의 재사용성이 없다고 판단되는 것은 쳐내거나 추가하지 말 것!
 
 # define TRUE 1
 # define FALSE 0
