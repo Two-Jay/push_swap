@@ -6,20 +6,27 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 08:20:09 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/10 09:26:28 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <stdio.h>
 
 // checked!
-int ft_validate_input(int argc, char **argv, t_bucket *data);
+// int ft_validate_input(int argc, char **argv, t_bucket *data);
 // duplicated input check, if err return 1, or if not 0
 // void	fn_check_dupvalue(int value, t_stack *stack)
 // {
 	
 // }
+
+void fn_print_stack(t_bucket *data)
+{
+	printf("A : ");
+	ps_dlstprint(data->a);
+	printf("B : ");
+	ps_dlstprint(data->b);
+}
 
 void	fn_insert_node(char *str, int ix, int *err_flag, t_bucket *data)
 {
@@ -60,6 +67,6 @@ int main(int argc, char **argv)
 
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
-	ps_dlstprint(data->a);
+	fn_print_stack(data);
 	return (0);
 }
