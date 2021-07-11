@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:37:26 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 12:27:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/12 01:07:36 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,8 @@
 #include <stdio.h>
 #include "../lib/libft/libft.h"
 #include "../lib/libps/libps.h"
+
+int fn_bubblesort(int *arr, int size);
+int fn_validate_input(int argc, char **argv, t_bucket *data);
 
 #endif

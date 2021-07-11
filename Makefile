@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/10 09:25:34 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/12 02:02:32 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ INC_DIR		=	./includes/
 PS_FILE_DIR	=	./src/push_swap/
 CK_FILE_DIR	=	./src/checker/
 
-PS_FILE		=	push_swap.c
+PS_FILE		=	push_swap.c validate.c bubblesort.c
 
 CK_FILE		=	checker.c
 
@@ -46,34 +46,16 @@ CK_OBJ		=	$(addprefix $(OBJ_DIR), $(CK_OBJ_FILE))
 all			:	mklib $(NAME)
 
 $(NAME)		:	$(PS_OBJ)
-	$(CC) $(CCFLAG) $(LIB) $(INCLUDE) $(PS_OBJ) -o $(NAME)
+	$(CC) $(CCFLAG) $(PS_OBJ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
-$(PS_OBJ) : $(PS_SRC)
+$(OBJ_D)%.o : $(PS_FILE_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
-	@echo "\033[0;92m* $(NAME) object file was created *\033[0m"
+	$(CC) $(CCFLAG) $(INCLUDE) $< -o $@
 
 mklib			:
 	@make -C $(LIBFT_DIR)
 	@make -C $(LIBPS_DIR)
-
-
-bonus		:	mklib $(BNAME)
-
-$(BNAME)	:	$(CK_OBJ)
-	@$(CC) $(CCFLAG) $(CK_OBJ) $(LIB) $(INCLUDE) -o $(BNAME)
-	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
-
-$(OBJ_DIR)%.o : $(CK_SRC)
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
-
-debug1			:	mklib $(NAME)
-
-$(NAME)		:	$(PS_OBJ)
-	$(CC) $(CCFLAG) $(SNTZ) $(LIB) $(INCLUDE) $(PS_OBJ) -o $(NAME)
-	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
 clean		:
 	@make -C $(LIBFT_DIR) clean

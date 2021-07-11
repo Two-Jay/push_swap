@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 08:06:54 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/10 13:50:54 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct		s_dlst
 {
-	size_t			idx;
+	int				idx;
 	int				value;
 	struct s_dlst	*next;
 	struct s_dlst	*before;
