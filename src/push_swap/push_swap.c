@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/12 01:06:03 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/12 02:10:02 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int fn_print_input(t_bucket *data)
 	printf("\n");
 	return (0);
 }
-
 
 void fn_print_stack(t_bucket *data)
 {

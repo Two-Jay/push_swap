@@ -6,13 +6,13 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:53:38 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/12 01:03:26 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/12 02:08:05 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void fn_swap(int *a, int *b)
+static void fn_swap(int *a, int *b)
 {
 	int tmp;
 	
