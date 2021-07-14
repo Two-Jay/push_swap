@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/14 16:19:19 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/14 16:38:49 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void fn_print_stack(t_bucket *data)
 	ps_dlstprint(data->b);
 	printf("target : ");
 	fn_print_input(data);
-	printf("sorted : ");
-	printf("%d\n", fn_is_sorted(data->input_arr, data->size));
 }
 
 int main(int argc, char **argv)
@@ -46,7 +44,5 @@ int main(int argc, char **argv)
 
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
-	fn_print_stack(data);
-	fn_bubblesort(data->input_arr, data->size);
 	fn_print_stack(data);
 }
