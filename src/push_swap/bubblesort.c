@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:53:38 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/12 02:08:05 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/14 16:12:44 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,47 @@ static void fn_swap(int *a, int *b)
 	*b = tmp;
 }
 
-int fn_bubblesort(int *arr, int size)
+int		fn_bubblesort(int *a, int size)
 {
 	int i;
 	int j;
-	int flag;
 
 	i = 0;
-	flag = 1;
-	while (i < size && flag)
+	while (i < (size - 1))
 	{
-		flag = 0;
-		j = i + 1;
-		while (j < size)
+		j = 0;
+		while (j < (size - 1))
 		{
-			if (arr[j] < arr[i])
-			{
-				fn_swap(&arr[i], &arr[j]);
-				flag = 1;
-			}
+			if (a[j] > a[j + 1])
+				fn_swap(&a[j], &a[j + 1]);
 			j++;
 		}
 		i++;
 	}
 	return (0);
+}
+
+int		fn_is_sorted(int *arr, int size)
+{
+	int i;
+	int j;
+	int sorted;
+	
+	sorted = 1;
+	i = 0;
+	while (i < (size - 1))
+	{
+		j = 0;
+		while (j < (size - 1))
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				sorted = 0;
+				break;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (sorted);
 }
