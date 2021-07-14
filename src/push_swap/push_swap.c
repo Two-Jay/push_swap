@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/14 16:38:49 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/14 23:30:42 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,28 @@ void fn_print_stack(t_bucket *data)
 	ps_dlstprint(data->a);
 	printf("B : ");
 	ps_dlstprint(data->b);
-	printf("target : ");
-	fn_print_input(data);
+}
+
+int ps_test(int count, t_bucket *data)
+{
+	int ix;
+	
+	ix = 0;
+	while (ix < count)
+	{
+		ps_inst_pb(data);
+		ix++;
+	}
+	fn_print_stack(data);
+	ix = 0;
+	while (ix < count)
+	{
+		ps_inst_rb(data);
+		printf("=======[%d]\n", ix);
+		fn_print_stack(data);
+		ix++;
+	}
+	return (0);
 }
 
 int main(int argc, char **argv)
@@ -45,4 +65,5 @@ int main(int argc, char **argv)
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
 	fn_print_stack(data);
+	ps_test(6, data);
 }
