@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/15 17:09:03 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/15 17:42:17 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,18 @@ int fn_print_input(t_bucket *data)
 	return (0);
 }
 
-void fn_print_stack(t_bucket *data)
+void fn_print_stack(t_bucket *data, int flag)
 {
+	if (flag == 1)
+		printf("===== before ===\n");
+	if (flag == 2)
+		printf("===== after ===\n");
 	printf("A : ");
 	ps_dlstprint(data->a);
 	printf("B : ");
 	ps_dlstprint(data->b);
+	if (flag == 2)
+		printf("result : [%d]\n", data->count);
 }
 
 int ps_test(int count, void (*test_fn)(t_bucket *), t_bucket *data)
@@ -47,7 +53,7 @@ int ps_test(int count, void (*test_fn)(t_bucket *), t_bucket *data)
 	{
 		fp(data);
 		printf("=======[%d]\n", ix);
-		fn_print_stack(data);
+		fn_print_stack(data, 0);
 		ix++;
 	}
 	return (0);
@@ -91,5 +97,7 @@ int main(int argc, char **argv)
 
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
+	fn_print_stack(data, 1);
 	fn_push_swap(data);
+	fn_print_stack(data, 2);
 }
