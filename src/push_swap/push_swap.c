@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/15 15:37:31 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/15 17:09:03 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,43 @@ int ps_test(int count, void (*test_fn)(t_bucket *), t_bucket *data)
 	return (0);
 }
 
+int		fn_print_dlst_detail(t_stack *stack)
+{
+	int	ix;
+	t_dlst	*ptr;
+
+	ix = 0;
+	if (!stack)
+		return (EXIT_FAILURE);
+	if (stack->size == 0 && stack->top == NULL)
+		return (printf("\n"));
+	ptr = stack->top;
+	while (ix < stack->size)
+	{
+		if (ix == stack->size - 1)
+		{
+			printf("index = [%d]\n", ix);
+			printf("value = [%d]\n", ptr->value);
+			printf("rank = [%d]\n", ptr->rank);
+		}
+		else
+		{
+			printf("index = [%d]\n", ix);
+			printf("value = [%d]\n", ptr->value);
+			printf("rank = [%d]\n", ptr->rank);
+		}
+		ptr = ptr->next;
+		ix++;
+	}
+	printf("\n");
+	return (EXIT_SUCCESS);
+}
+
 int main(int argc, char **argv)
 {
 	t_bucket *data;
 
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
-	fn_print_stack(data);
+	fn_push_swap(data);
 }

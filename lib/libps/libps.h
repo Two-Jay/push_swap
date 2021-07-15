@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/15 13:22:46 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/15 17:20:47 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_bucket
 # define FALSE 0
 
 t_bucket	*ps_bucketnew(int arg_len);
+int		ps_stack_issorted(t_stack *stack);
 
 int		ps_dlstadd_back(t_stack *stack, t_dlst *node);
 int		ps_dlstadd_front(t_stack *stack, t_dlst *node);

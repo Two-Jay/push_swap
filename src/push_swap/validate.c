@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/14 23:08:53 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/15 15:47:55 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	fn_find_value(int value, int *arr, int size)
 	while (i < size)
 	{
 		if (value == arr[i])
-			return (i);
+			return (i + 1);
 		i++;
 	}
 	return (-1);
