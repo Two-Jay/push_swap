@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/14 22:54:13 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/15 13:22:46 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		ps_dlstadd_front(t_stack *stack, t_dlst *node);
 int		ps_dlstclear(t_stack *stack);
 int		ps_dlstdel_front(t_stack *stack);
 t_dlst	*ps_dlstnew(int value);
-t_dlst	*ps_dlstnext(t_dlst *node, unsigned int step);
 t_dlst	*ps_dlstnext(t_dlst *node, unsigned int step);
 t_dlst	*ps_dlstpop_back(t_stack *stack);
 t_dlst	*ps_dlstpop_front(t_stack *stack);
