@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/15 14:10:29 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/15 14:16:27 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ int main(int argc, char **argv)
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
 	fn_print_stack(data);
-	ps_test(3, &ps_inst_pb, data);
-	ps_test(3, &ps_inst_rb, data);
-	ps_test(4, &ps_inst_pa, data);
-	ps_test(3, &ps_inst_ra, data);
-
+	ps_test(5, &ps_inst_pb, data);
+	ps_test(5, &ps_inst_rrb, data);
 }
