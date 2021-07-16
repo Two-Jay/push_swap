@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:21:14 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 08:11:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/16 23:48:17 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	ps_inst_sb(t_bucket *bucket)
 {
-	t_dlst	*ptr1;
-	t_dlst	*ptr2;
+	int old_top_value;
+	int new_top_value;
 
 	if (bucket->a->size < 2)
 		return ;
-	ptr1 = bucket->b->top;
-	ptr2 = bucket->b->top->next;
-	bucket->b->top = ptr2;
-	ptr1->before = ptr2;
-	ptr1->next = ptr2->next;
-	ptr2->before = bucket->b->bottom;
-	ptr2->next = ptr1;
+	old_top_value = bucket->b->top->value;
+	new_top_value = bucket->b->top->next->value;
+	ps_dlstpop_front(bucket->b);
+	ps_dlstpop_front(bucket->b);
+	ps_dlstadd_front(bucket->b, ps_dlstnew(old_top_value));
+	ps_dlstadd_front(bucket->b, ps_dlstnew(new_top_value));
 	bucket->count++;
 }

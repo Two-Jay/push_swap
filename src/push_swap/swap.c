@@ -6,15 +6,11 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/15 18:30:32 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/17 03:20:15 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void fn_dlst_swap_3()
-{
-}
 
 int fn_push_swap_t3(t_bucket *data)
 {
@@ -22,7 +18,18 @@ int fn_push_swap_t3(t_bucket *data)
 		ps_inst_sa(data);
 	else
 	{
-
+		if (data->a->top->value > data->a->top->next->value && data->a->bottom->value > data->a->top->value)
+			ps_inst_rra(data);
+		if (data->a->top->value > data->a->top->next->value)
+			ps_inst_sa(data);
+		ps_inst_pb(data);
+		// if (data->a->top->value > data->a->top->next->value)
+		// 	ps_inst_sa(data);
+		// if (data->b->top->value > data->a->bottom->next->value)
+		// {
+		// 	ps_inst_pa(data);
+		// 	ps_inst_rra(data);
+		// }
 	}
 	return (data->count);
 }
@@ -39,11 +46,8 @@ int fn_push_swap_o5(t_bucket *data)
 
 int	fn_push_swap(t_bucket *data)
 {
-	// stack 이 정렬되어 있는지는 여기에서 체크한다.
-	// 이 이후에 스텍이 정렬되어 있는지는 고려하지 말 것.
-	if (data->size == 1 || !ps_stack_issorted(data->a))
-		return (data->count);
-	else
+	// stack 이 정렬되어 있는지는 여기에서 체크한다. 이 이후에 스텍이 정렬되어 있는지는 고려하지 말 것.
+	if (data->size != 1 && !ps_stack_issorted(data->a))
 	{
 		if (data->size > 1 && data->size <= 3)
 			fn_push_swap_t3(data);
