@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 03:20:15 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/17 03:45:40 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ int fn_push_swap_t3(t_bucket *data)
 		ps_inst_sa(data);
 	else
 	{
-		if (data->a->top->value > data->a->top->next->value && data->a->bottom->value > data->a->top->value)
-			ps_inst_rra(data);
 		if (data->a->top->value > data->a->top->next->value)
 			ps_inst_sa(data);
 		ps_inst_pb(data);
-		// if (data->a->top->value > data->a->top->next->value)
-		// 	ps_inst_sa(data);
-		// if (data->b->top->value > data->a->bottom->next->value)
-		// {
-		// 	ps_inst_pa(data);
-		// 	ps_inst_rra(data);
-		// }
+		if (data->a->top->value > data->a->top->next->value)
+			ps_inst_sa(data);
+		if (data->b->top->value > data->a->top->value)
+		{
+			ps_inst_pa(data);
+			ps_inst_sa(data);
+		}
+		else
+			ps_inst_pa(data);
 	}
 	return (data->count);
 }
