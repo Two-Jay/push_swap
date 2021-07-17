@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:08:40 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 17:49:00 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/17 18:46:14 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_dlst	*ps_dlstnew(int value)
 		node->value = 0;
 	else
 		node->value = value;
-	node->ix = 0;
 	node->next = NULL;
 	node->before = NULL;
 	return (node);

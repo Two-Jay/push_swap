@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 17:48:23 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/17 18:05:39 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 typedef struct		s_dlst
 {
-	int				ix;
 	int				rank;
 	int				value;
 	struct s_dlst	*next;

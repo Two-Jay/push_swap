@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:16:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 17:49:41 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/17 18:05:26 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_dlst	*ps_dlstpop_front(t_stack *stack)
 		stack->top->before = stack->bottom;
 		stack->bottom->next = stack->top;
 	}
-	ret->ix = 0;
 	ret->next = NULL;
 	ret->before = NULL;
 	stack->size--;
