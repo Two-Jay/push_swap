@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 04:26:56 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/18 03:55:06 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ int		fn_print_dlst_detail(t_stack *stack)
 int main(int argc, char **argv)
 {
 	t_bucket *data;
+	int rra_flag;
 
+	rra_flag = 0;
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
 	// fn_print_stack(data, 1);

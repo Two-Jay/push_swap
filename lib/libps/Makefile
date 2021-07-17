@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/17 18:52:45 by jekim             #+#    #+#              #
-#    Updated: 2021/07/15 17:21:10 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/18 02:52:29 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS			= ps_bucketnew.c	ps_dlstadd_back.c	ps_dlstadd_front.c \
 					ps_inst_sa.c	ps_inst_sb.c	ps_inst_ss.c	\
 					ps_inst_pa.c	ps_inst_pb.c	ps_inst_ra.c	\
 					ps_inst_rb.c	ps_inst_rr.c	ps_inst_rra.c	\
-					ps_inst_rrb.c	ps_inst_rrr.c   ps_stack_issorted.c
+					ps_inst_rrb.c	ps_inst_rrr.c   ps_stack_issorted.c \
+					ps_dlstfind_idx.c
 
 OBJS			= $(SRCS:.c=.o)
 
