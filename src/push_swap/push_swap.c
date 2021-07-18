@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 06:04:55 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 06:16:18 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,9 @@ int		fn_print_dlst_detail(t_stack *stack)
 int main(int argc, char **argv)
 {
 	t_bucket *data;
-	int rra_flag;
-	int ix;
 
 	data = ps_bucketnew(argc - 1);
 	fn_validate_input(argc, argv, data);
-	printf("size is == [%d]\n", data->size);
-	ix = ps_dlstfind_idx(data->a, 1, &rra_flag);
-	printf("idx = [%d]\nrra_flag = [%d]\n", rra_flag ? data->size - ix : ix, rra_flag);
 	fn_push_swap(data);
 	fn_print_stack(data, 2);
 	return (0);
