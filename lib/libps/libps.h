@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/18 00:28:54 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/18 13:04:20 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_dlst	*ps_dlstpop_front(t_stack *stack);
 t_dlst	*ps_dlstprev(t_dlst *node, unsigned int step);
 int		ps_dlstswap(t_dlst *node);
 int		ps_dlstprint(t_stack *stack);
-int 		ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag);
+int 	ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag);
 
 void	ps_inst_sa(t_bucket *bucket);
 void	ps_inst_sb(t_bucket *bucket);

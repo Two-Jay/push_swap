@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 22:54:25 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/18 00:30:04 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 06:06:47 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int 		ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag)
 	nptr = stack->top;
 	while (ix < stack->size)
 	{
+		if (*rra_flag == 0 && ix > (stack->size / 2) - (stack->size % 2))
+			*rra_flag = 1;
 		if (nptr->rank == rank)
 			return (ix);
-		if (*rra_flag == 0 && ix > (stack->size / 2))
-			*rra_flag = 1;
 		nptr = nptr->next;
 		ix++;
 	}
