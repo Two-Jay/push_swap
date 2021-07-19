@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:24:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 08:11:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 20:28:48 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	ps_inst_rr(t_bucket *bucket)
 {
-	bucket->a->top = ps_dlstprev(bucket->a->top, 1);
-	bucket->a->bottom = ps_dlstprev(bucket->a->bottom, 1);
-	bucket->b->top = ps_dlstprev(bucket->b->top, 1);
-	bucket->b->bottom = ps_dlstprev(bucket->b->bottom, 1);
-	bucket->count++;
+	ps_inst_ra(bucket);
+	ps_inst_rb(bucket);
+	bucket->count--;
 }

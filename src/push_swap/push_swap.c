@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 06:16:18 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 08:53:58 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ int main(int argc, char **argv)
 	fn_validate_input(argc, argv, data);
 	fn_push_swap(data);
 	fn_print_stack(data, 2);
+	fn_print_dlst_detail(data->a);
 	return (0);
 }

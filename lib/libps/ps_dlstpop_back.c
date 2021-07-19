@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:17:49 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 18:05:20 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 07:36:23 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_dlst	*ps_dlstpop_back(t_stack *stack)
 	if (stack->size == 1)
 	{
 		ret = stack->top;
-		ret->next = NULL;
-		ret->before = NULL;
+		stack->top = NULL;
+		stack->bottom = NULL;
 	}
 	else
 	{

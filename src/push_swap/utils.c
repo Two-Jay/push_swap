@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:34:59 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 07:08:52 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 20:40:35 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int fn_findup_rank_a(t_bucket *data, int rank)
 
 	ix = 0;
 	rra_flag = 0;
-	fp = ps_inst_rra;
+	fp = ps_inst_ra;
 	count = ps_dlstfind_idx(data->a, rank, &rra_flag);
 	if (count < 0)
 		return (0);
 	if (rra_flag == 1)
 	{
-		fp = ps_inst_ra;
+		fp = ps_inst_rra;
 		count = (count - data->a->size) * -1;
 	}
 	while (ix < count)

@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 07:02:30 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 20:46:20 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 int fn_push_swap_t3(t_bucket *data)
 {
-	if (data->size == 2 && data->a->top->value > data->a->top->next->value)
+	if (data->a->top->value > data->a->top->next->value)
 		ps_inst_sa(data);
-	else
+	if (data->size == 3)
 	{
-		fn_findup_rank_a(data, 1);
-		ps_inst_pb(data);
-		if (data->a->top->value > data->a->top->next->value)
-			ps_inst_sa(data);
-		ps_inst_pa(data);
+		if (data->a->top->next->value > data->a->top->next->next->value)
+			ps_inst_rra(data);
 	}
 	return (data->count);
 }
@@ -30,19 +27,12 @@ int fn_push_swap_t3(t_bucket *data)
 int fn_push_swap_t5(t_bucket *data)
 {
 	fn_findup_rank_a(data, 1);
-	printf("%d\n", data->count);
-	// ps_inst_pb(data);
-	// printf("%d\n", data->count);
-	// fn_findup_rank_a(data, 2);
-	// printf("%d\n", data->count);
-	// ps_inst_pb(data);
-	// printf("%d\n", data->count);
-	// fn_push_swap_t3(data);
-	// printf("%d\n", data->count);
+	ps_inst_pb(data);
+	fn_findup_rank_a(data, 2);
+	ps_inst_pb(data);
+	fn_push_swap_t3(data);
 	// ps_inst_pa(data);
-	// printf("%d\n", data->count);
 	// ps_inst_pa(data);
-	// printf("%d\n", data->count);
 	return (data->count);
 }
 
