@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 20:46:20 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 22:36:27 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,33 @@ int fn_push_swap_t3(t_bucket *data)
 {
 	if (data->a->top->value > data->a->top->next->value)
 		ps_inst_sa(data);
-	if (data->size == 3)
+	if (data->a->size == 3)
 	{
-		if (data->a->top->next->value > data->a->top->next->next->value)
+		if (data->a->top->value > data->a->top->next->next->value)
 			ps_inst_rra(data);
+		else if (data->a->top->value < data->a->top->next->next->value)
+		{
+			ps_inst_rra(data);
+			ps_inst_sa(data);
+		}
+		else if (data->a->top->next->value > data->a->top->next->next->value)
+		{
+			ps_inst_sa(data);
+			ps_inst_ra(data);
+		}
 	}
 	return (data->count);
 }
 
 int fn_push_swap_t5(t_bucket *data)
 {
-	fn_findup_rank_a(data, 1);
+	fn_findup_by_rank_a(data, 1);
 	ps_inst_pb(data);
-	fn_findup_rank_a(data, 2);
+	fn_findup_by_rank_a(data, 2);
 	ps_inst_pb(data);
 	fn_push_swap_t3(data);
-	// ps_inst_pa(data);
-	// ps_inst_pa(data);
+	ps_inst_pa(data);
+	ps_inst_pa(data);
 	return (data->count);
 }
 

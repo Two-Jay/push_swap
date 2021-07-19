@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/18 13:36:22 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/19 21:47:51 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,19 +55,6 @@ $(NAME)		:	$(PS_OBJ)
 	$(MAKE) -C $(LIBPS_DIR)
 	$(CC) $(CCFLAG) $(PS_OBJ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
-
-
-# $(OBJDIR_PS)/%.o: $(SRCDIR)/%.c
-# 	@mkdir -p $(OBJDIR_PS)
-# 	@$(CC) $(CFLAGS) $(HEADER) $< -o $@
-
-# $(OBJDIR_PS)/%.o: $(SRCDIR_PS)/%.c
-# 	@mkdir -p $(OBJDIR_PS)
-# 	@$(CC) $(CFLAGS) $(HEADER) $< -o $@
-
-# $(NAME_PS): $(OBJS_PS)
-# 	@$(CC) $(OBJS_PS) $(HEADER) $(LIBS) -o $@
-# 	@echo "[Push_swap - 모래반지 빵야빵야!]"
 
 clean		:
 	@make -C $(LIBFT_DIR) clean

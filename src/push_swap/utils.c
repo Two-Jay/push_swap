@@ -6,13 +6,13 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:34:59 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 20:40:35 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 20:59:52 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int fn_findup_rank_a(t_bucket *data, int rank)
+int fn_findup_by_rank_a(t_bucket *data, int rank)
 {
 	void (*fp)(t_bucket *);
 	int rra_flag;
@@ -38,7 +38,7 @@ int fn_findup_rank_a(t_bucket *data, int rank)
 	return (1);
 }
 
-int fn_findup_rank_b(t_bucket *data, int rank)
+int fn_findup_by_rank_b(t_bucket *data, int rank)
 {
 	void (*fp)(t_bucket *);
 	int rra_flag;

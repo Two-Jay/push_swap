@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:37:26 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/18 13:36:00 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/19 21:00:02 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void fn_print_stack(t_bucket *data, int flag);
 int		fn_print_dlst_detail(t_stack *stack);
 
 int find_node_by_rank(t_stack *stack, int rank);
-int fn_findup_rank_a(t_bucket *data, int rank);
-int fn_findup_rank_b(t_bucket *data, int rank);
+int fn_findup_by_rank_a(t_bucket *data, int rank);
+int fn_findup_by_rank_b(t_bucket *data, int rank);
 
 #endif
 
