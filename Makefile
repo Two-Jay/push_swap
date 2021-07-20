@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/19 21:47:51 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/20 09:08:05 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,6 @@ PS_FILE		=	push_swap.c \
 				bubblesort.c	\
 				swap.c		\
 				utils.c
-
-CK_FILE		=	checker.c
 
 PS_OBJ_FILE	=	$(PS_FILE:.c=.o)
 CK_OBJ_FILE	=	$(CK_FILE:.c=.o)
