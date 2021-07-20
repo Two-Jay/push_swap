@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/20 17:39:33 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/20 19:21:38 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,28 @@ int fn_push_swap_t5(t_bucket *data)
 	return (data->count);
 }
 
-int fn_push_swap_o5(t_bucket *data)
+int fn_push_swap_t7(t_bucket *data)
+{
+	int i;
+	int limit;
+
+	i = 0;
+	if (data->size == 6)
+		limit = 4;
+	else
+		limit = 5;
+	while (++i < limit)
+	{
+		fn_findup_by_rank_a(data, i);
+		ps_inst_pb(data);
+	}
+	fn_push_swap_t3(data);
+	while (--i)
+		ps_inst_pa(data);
+	return (data->count);
+}
+
+int fn_push_swap_o7(t_bucket *data)
 {
 	return (data->count);
 }
@@ -61,8 +82,8 @@ int	fn_push_swap(t_bucket *data)
 			fn_push_swap_t3(data);
 		else if (data->size > 3 && data->size <= 5)
 			fn_push_swap_t5(data);
-		else
-			fn_push_swap_o5(data);
+		else if (data->size > 5 && data->size <= 7)
+			fn_push_swap_t7(data);
 	}
 	return (data->count);
 }

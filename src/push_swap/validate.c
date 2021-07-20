@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/15 15:47:55 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/20 17:44:30 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	fn_check_dupvalue(int value, t_stack *stack)
 	while (stack->size && ix < stack->size)
 	{
 		if (value == ptr->value)
-			ft_strerr("Error\n duplicated values exist");
+			ft_strerr("Error : duplicated values exist\n");
 		else
 		{
 			ptr = ptr->next;
@@ -89,7 +89,7 @@ static int fn_fill_arr(int argc, char **argv, t_bucket *data)
 		if (!err_flag)
 			data->input_arr[ix] = ft_atoi_covf(argv[ix + 1], &err_flag);
 		if (err_flag)
-			ft_strerr("Error\n: an invalid param");
+			ft_strerr("Error : an invalid param\n");
 		ix++;
 	}
 	fn_bubblesort(data->input_arr, argc - 1);
@@ -106,7 +106,7 @@ int fn_validate_input(int argc, char **argv, t_bucket *data)
 	value = 0;
 	err_flag = 0;
 	if (argc == 1)
-		ft_strerr("Error\n : a few parameters\n");
+		ft_strerr("Error : a few parameters\n");
 	fn_fill_arr(argc, argv, data);
 	fn_fill_stack(argc, argv, data);
 	return (0);

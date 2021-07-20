@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:34:59 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 20:59:52 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/20 17:54:01 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int fn_findup_by_rank_b(t_bucket *data, int rank)
 	while (ix < count)
 	{
 		fp(data);
-		ix++;	
+		ix++;
 	}
 	return (1);
 }
