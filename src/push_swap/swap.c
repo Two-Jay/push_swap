@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/20 19:21:38 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/21 01:33:26 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ int fn_push_swap_t7(t_bucket *data)
 
 int fn_push_swap_o7(t_bucket *data)
 {
+	int max_idx;
+	int min_idx;
+
+	max_idx = data->size - 1;
+	min_idx = 0;
 	return (data->count);
 }
 
@@ -84,6 +89,8 @@ int	fn_push_swap(t_bucket *data)
 			fn_push_swap_t5(data);
 		else if (data->size > 5 && data->size <= 7)
 			fn_push_swap_t7(data);
+		else
+			fn_push_swap_o7(data);
 	}
 	return (data->count);
 }

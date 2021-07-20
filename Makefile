@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/20 09:08:05 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/21 01:28:12 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,10 @@ PS_FILE		=	push_swap.c \
 				swap.c		\
 				utils.c
 
+CK_FILE		=	checker.c \
+				validate.c	\
+				bubblesort.c
+
 PS_OBJ_FILE	=	$(PS_FILE:.c=.o)
 CK_OBJ_FILE	=	$(CK_FILE:.c=.o)
 
@@ -53,6 +57,20 @@ $(NAME)		:	$(PS_OBJ)
 	$(MAKE) -C $(LIBPS_DIR)
 	$(CC) $(CCFLAG) $(PS_OBJ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
+
+
+bonus			:	$(BNAME)
+
+$(OBJ_DIR)%.o : $(CK_FILE_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
+
+$(BNAME)		:	$(CK_OBJ)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBPS_DIR)
+	$(CC) $(CCFLAG) $(CK_OBJ) $(LIB) $(INCLUDE) -o $@
+	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
+
 
 clean		:
 	@make -C $(LIBFT_DIR) clean

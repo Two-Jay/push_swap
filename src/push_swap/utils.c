@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:34:59 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/20 17:54:01 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/21 07:35:49 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,28 @@ int fn_findup_by_rank_b(t_bucket *data, int rank)
 	while (ix < count)
 	{
 		fp(data);
+		ix++;
+	}
+	return (1);
+}
+
+int fn_strequel(char *line, char *target)
+{
+	int ix;
+	int size;
+
+	if (!(*line) && !(*target))
+		return (0);
+	if (!(*line) || !(*target))
+		return (0);
+	size = ft_strlen(line);
+	if (size != (int)ft_strlen(target))
+		return (0);
+	ix= 0;
+	while (ix < size)
+	{
+		if (line[ix] != target[ix])
+			return (0);
 		ix++;
 	}
 	return (1);

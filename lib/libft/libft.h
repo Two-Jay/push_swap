@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 04:17:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/08 01:39:13 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/21 07:18:29 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char				*ft_strnstr(const char *big, const char *little, size_t n);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *src, unsigned int start, size_t len);
 int					ft_strerr(char *err);
+int					ft_strgnl(int fd, char **line);
 char				*ft_strnew(char *str, size_t strlen);
 
 /*
