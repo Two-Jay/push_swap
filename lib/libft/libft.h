@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 04:17:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/21 07:18:29 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 03:02:29 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ char				*ft_substr(char const *src, unsigned int start, size_t len);
 int					ft_strerr(char *err);
 int					ft_strgnl(int fd, char **line);
 char				*ft_strnew(char *str, size_t strlen);
+int					ft_strequel(const char *s1, const char *s2);
 
 /*
 ** list struct functions
