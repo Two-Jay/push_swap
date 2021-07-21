@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 03:33:22 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 05:19:58 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ int fn_push_swap_t7(t_bucket *data)
 	int limit;
 
 	i = 0;
-	if (data->size == 6)
-		limit = 4;
-	else
-		limit = 5;
+	limit = data->size - 2;
 	while (++i < limit)
 	{
 		fn_findup_by_rank_a(data, i);
