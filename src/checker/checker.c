@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 03:18:08 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 05:13:43 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int fn_read_inputcommand(t_bucket *data)
 	{
 		err_flag = fn_check_command(data, line);
 		if (err_flag)
-			break ;
+			ft_strerr("Error\n");
 		free(line);
 	}
 	return (0);

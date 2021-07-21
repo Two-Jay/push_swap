@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 01:38:57 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/17 04:08:34 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 05:16:47 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_isable_strtonbr(char *nbr)
         nbr++;
 	while (*nbr)
 	{
-		if (!ft_isdigit(*nbr) && !ft_isspace(*nbr))
+		if (!ft_isdigit(*nbr))
 			return (++ret);
 		nbr++;
 	}

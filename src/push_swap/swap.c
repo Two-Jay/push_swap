@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/21 01:33:26 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 03:33:22 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int fn_push_swap_o7(t_bucket *data)
 
 int	fn_push_swap(t_bucket *data)
 {
-	// stack 이 정렬되어 있는지는 여기에서 체크한다. 이 이후에 스텍이 정렬되어 있는지는 고려하지 말 것.
 	if (data->size != 1 && !ps_stack_issorted(data->a))
 	{
 		if (data->size > 1 && data->size <= 3)
