@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 02:25:46 by jseo              #+#    #+#              #
-#    Updated: 2021/07/22 03:02:14 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/22 18:54:37 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,16 @@ NAME			= libft.a
 all:			$(NAME)
 
 $(NAME):		$(OBJS) $(BONUS_OBJS)
-				ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
+				@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
+
+%.o : %.c
+	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
 re:				fclean $(NAME)
 

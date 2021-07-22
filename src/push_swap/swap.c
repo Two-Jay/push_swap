@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 05:19:58 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 18:49:40 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,26 @@ int fn_push_swap_o7(t_bucket *data)
 	return (data->count);
 }
 
+int fn_push_swap_t100(t_bucket *data)
+{
+	int ix;
+	int chunk;
+
+	ix = 0;
+	chunk = 5;
+	while (ix < chunk)
+	{
+
+		ix++;
+	}
+	return (data->count);
+}
+
+int fn_push_swap_o100(t_bucket *data)
+{
+	return (data->count);	
+}
+
 int	fn_push_swap(t_bucket *data)
 {
 	if (data->size != 1 && !ps_stack_issorted(data->a))
@@ -85,8 +105,10 @@ int	fn_push_swap(t_bucket *data)
 			fn_push_swap_t5(data);
 		else if (data->size > 5 && data->size <= 7)
 			fn_push_swap_t7(data);
+		else if (data->size > 7 && data->size <= 100)
+			fn_push_swap_t100(data);
 		else
-			fn_push_swap_o7(data);
+			fn_push_swap_o100(data);
 	}
 	return (data->count);
 }

@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 21:45:10 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/08 02:42:11 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 05:59:53 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi_covf(const char *nptr, int *ovf_flag)
 		ix++;
 	while (nptr[ix] && ('0' <= nptr[ix] && nptr[ix] <= '9'))
 		nbr = (nbr * 10) + (nptr[ix++] - '0');
-	if (ft_isoverflow(nbr))
+	if (ft_isoverflow(nbr) == 1 || ft_isoverflow(nbr) == -1)
 		return (++(*ovf_flag));
 	else
 		return ((int)(nbr * sign));

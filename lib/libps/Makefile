@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/17 18:52:45 by jekim             #+#    #+#              #
-#    Updated: 2021/07/18 17:39:41 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/22 18:54:42 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,17 @@ NAME			= libps.a
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				ar rc $(NAME) $(OBJS)
+				@ar rc $(NAME) $(OBJS)
+
+%.o : %.c
+	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
+
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
 re:				fclean $(NAME)
 
