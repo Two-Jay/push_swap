@@ -6,11 +6,12 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:22:41 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 08:11:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/22 22:36:47 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
+#include <stdio.h>
 
 void	ps_inst_pb(t_bucket *bucket)
 {

@@ -26,5 +26,6 @@
 		"system_error": "c",
 		"tuple": "c",
 		"type_traits": "c"
-	}
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }
