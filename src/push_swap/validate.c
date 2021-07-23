@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 12:22:27 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 12:50:12 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int fn_validate_input(int argc, char **argv, t_bucket *data)
 	ix = 0;
 	value = 0;
 	err_flag = 0;
-	if (argc != 2)
-		ft_strerr("Error : invalid parameters\n");
+	if (argc == 1)
+		ft_strerr("Error : no parameters\n");
 	fn_fill_arr(arg_size, bucket, data);
 	fn_fill_stack(arg_size, bucket, data);
 	return (0);
