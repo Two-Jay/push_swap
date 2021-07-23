@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 12:50:12 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 14:50:44 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,34 @@ int fn_validate_input(int argc, char **argv, t_bucket *data)
 	fn_fill_arr(arg_size, bucket, data);
 	fn_fill_stack(arg_size, bucket, data);
 	return (0);
+}
+
+static int		ft_count_word(const char *src, char c)
+{
+	unsigned int	count;
+
+	count = 0;
+	while (*src)
+	{
+		if (*src != c && *(src + 1) == c)
+			count++;
+		if (*src != c && !*(src + 1))
+			count++;
+		src++;
+	}
+	return (count);
+}
+
+// 분기점 형성할 것
+// ./push_swap "5 4 3 2 1" 과
+// ./push_swap 5 4 3 2 1 모두 인자로 받을 수 있도록
+void fn_check_validate_type(int argc, char **argv, t_bucket *data)
+{
+	int count;
+
+	count = ft_count_word(argv[0], ' ');
+	if (count > 1 && argc == 2)
+		data->arg_type = STR_ARG;
+	else
+		data->arg_type = NUM_ARG;
 }
