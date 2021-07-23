@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 04:17:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 22:29:26 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 10:22:57 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <limits.h>
 
 # define BUFFER_SIZE 128

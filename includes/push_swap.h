@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:37:26 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/21 07:35:30 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 08:08:04 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <stdio.h>
 #include "../lib/libft/libft.h"
 #include "../lib/libps/libps.h"
+
+# define CHUNK_SIZE 10
 
 int fn_bubblesort(int *arr, int size);
 int		fn_is_sorted(int *arr, int size);

@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 21:30:09 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 10:57:39 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		fn_print_dlst_detail(t_stack *stack)
 		}
 		else
 		{
-			printf("index = [%d]\n", ix);
+			printf("index [%d]\n", ix);
 			printf("value = [%d]\n", ptr->value);
 			printf("rank = [%d]\n", ptr->rank);
 			printf("next value = [%d]\n", ptr->next->value);

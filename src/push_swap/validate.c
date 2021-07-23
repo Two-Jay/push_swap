@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/20 17:44:30 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 10:15:35 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,23 +76,36 @@ static int fn_fill_stack(int argc, char **argv, t_bucket *data)
 	return (0);
 }
 
-static int fn_fill_arr(int argc, char **argv, t_bucket *data)
+int fn_check_bucket_size(char **bucket)
+{
+	int ix;
+
+	ix = 0;
+	while (bucket[ix] && ft_strlen(bucket[ix]))
+		ix++;
+	return (ix);
+}
+
+static int fn_fill_arr(int arg_size, char **bucket, t_bucket *data)
 {
 	int ix;
 	int err_flag;
 
 	ix = 0;
 	err_flag = 0;
-	while (ix < argc - 1)
+	while (ix < arg_size)
 	{
-		err_flag = ft_isable_strtonbr(argv[ix + 1]);
+		err_flag = ft_isable_strtonbr(bucket[ix]);
 		if (!err_flag)
-			data->input_arr[ix] = ft_atoi_covf(argv[ix + 1], &err_flag);
+			data->input_arr[ix] = ft_atoi_covf(bucket[ix], &err_flag);
 		if (err_flag)
 			ft_strerr("Error : an invalid param\n");
 		ix++;
 	}
-	fn_bubblesort(data->input_arr, argc - 1);
+	fn_bubblesort(data->input_arr, arg_size);
+	ix = 0;
+	while (ix < arg_size)
+		printf("[%d] ", (data->input_arr)[ix++]);
 	return (0);
 }
 
@@ -101,13 +114,24 @@ int fn_validate_input(int argc, char **argv, t_bucket *data)
 	int	ix;
 	int value;
 	int	err_flag;
+	char **bucket;
+	int arg_size;
 
+	bucket = ft_split(argv[1], ' ');
+	if (!bucket)
+		exit(EXIT_FAILURE);
+	arg_size = fn_check_bucket_size(bucket);
+	// check bucket
+	ix = 0;
+	while (ix < arg_size)
+		printf("[%s] ", bucket[ix++]);
+	// check bucket end
 	ix = 0;
 	value = 0;
 	err_flag = 0;
-	if (argc == 1)
-		ft_strerr("Error : a few parameters\n");
-	fn_fill_arr(argc, argv, data);
+	if (argc != 2)
+		ft_strerr("Error : invalid parameters\n");
+	fn_fill_arr(arg_size, bucket, data);
 	fn_fill_stack(argc, argv, data);
 	return (0);
 }

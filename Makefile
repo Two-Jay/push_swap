@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/22 19:04:14 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/23 10:19:35 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,8 @@ $(BNAME)		:	$(CK_OBJ)
 	$(CC) $(CCFLAG) $(CK_OBJ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
 
+debug			:	re $(NAME)
+	@lldb ./push_swap "5 4 3 2 1"
 
 clean		:
 	@make -C $(LIBFT_DIR) clean

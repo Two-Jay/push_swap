@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:43:03 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 22:46:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 09:29:26 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,32 @@ int fn_push_swap_t7(t_bucket *data)
 int fn_push_swap_t100(t_bucket *data)
 {
 	int ix;
+	int pb_count;
+	int chunk;
 	t_dlst *nptr;
 
 	ix = 1;
+	pb_count = 0;
+	chunk = 1;
 	nptr = data->a->top;
-	ps_inst_pb(data);
-	while (ix < 10)
+	printf("size = [%d]\n", data->size);
+	fn_print_stack(data, 1);
+	while (data->a->size != 0)
 	{
-		printf("val[%d] rank[%d] nval[%d]\n", nptr->value , nptr->rank ,nptr->next->value);
-		if (nptr->rank >= 1 && nptr->rank < 6)
+		if (nptr->rank >= 1 + (CHUNK_SIZE * (chunk - 1)) && nptr->rank <= (CHUNK_SIZE * chunk))
 		{
+			fn_findup_by_rank_a(data, nptr->rank);
 			ps_inst_pb(data);
+			pb_count++;
+			nptr = data->a->top;
 		}
-		nptr = ps_dlstnext(nptr, 1);
-		ix++;
+		else
+			nptr = nptr->next;
+		if (pb_count == CHUNK_SIZE)
+		{
+			pb_count = 0;
+			chunk++;
+		}
 	}
 	return (data->count);
 }
