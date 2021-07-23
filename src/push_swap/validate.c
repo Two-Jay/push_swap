@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 10:15:35 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 11:13:54 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,6 @@ static int fn_fill_arr(int arg_size, char **bucket, t_bucket *data)
 		ix++;
 	}
 	fn_bubblesort(data->input_arr, arg_size);
-	ix = 0;
-	while (ix < arg_size)
-		printf("[%d] ", (data->input_arr)[ix++]);
 	return (0);
 }
 
@@ -121,11 +118,6 @@ int fn_validate_input(int argc, char **argv, t_bucket *data)
 	if (!bucket)
 		exit(EXIT_FAILURE);
 	arg_size = fn_check_bucket_size(bucket);
-	// check bucket
-	ix = 0;
-	while (ix < arg_size)
-		printf("[%s] ", bucket[ix++]);
-	// check bucket end
 	ix = 0;
 	value = 0;
 	err_flag = 0;
