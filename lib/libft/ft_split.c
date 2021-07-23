@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 23:41:52 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 11:11:33 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 12:09:41 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ static int		ft_count_word(const char *src, char c)
 	unsigned int	count;
 
 	count = 0;
-	while (*src++)
+	while (*src)
 	{
-		if (*src != c && (*(src + 1) == c || *(src + 1) == '\0'))
+		if (*src != c && *(src + 1) == c)
 			count++;
+		if (*src != c && !*(src + 1))
+			count++;
+		src++;
 	}
 	return (count);
 }
@@ -31,7 +34,7 @@ static int		ft_wordlen(const char *src, char c)
 
 	
 	len = 0;
-	while (*src && *src != c)
+	while (*src != c && *src)
 	{
 		len++;
 		src++;
@@ -60,7 +63,6 @@ static char		**ft_fillbucket(const char *src, unsigned int count,
 	unsigned int	len;
 
 	ix = 0;
-	
 	while (ix < count)
 	{
 		while (*src == c)
@@ -87,6 +89,7 @@ char			**ft_split(const char *src, char c)
 {
 	char			**bucket;
 	unsigned int	count;
+	int ix;
 
 	if (!src)
 		return (NULL);
