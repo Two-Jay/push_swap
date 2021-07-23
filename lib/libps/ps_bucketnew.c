@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:32:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 08:09:54 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 12:20:52 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ static void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-t_bucket	*ps_bucketnew(int arg_len)
+t_bucket	*ps_bucketnew(void)
 {
 	t_bucket	*bucket;
 	t_stack		*a;
 	t_stack		*b;
 
-	if (arg_len < 0)
-		exit(EXIT_FAILURE);
 	bucket = (t_bucket *)ft_calloc(1, sizeof(t_bucket));
 	if (!bucket)
 		exit(EXIT_FAILURE);
@@ -54,8 +52,6 @@ t_bucket	*ps_bucketnew(int arg_len)
 	bucket->b = b;
 	bucket->size = 0;
 	bucket->count = 0;
-	bucket->input_arr = (int *)ft_calloc(arg_len + 1, sizeof(int));
-	if (!bucket->input_arr)
-		exit(EXIT_FAILURE);
+	bucket->input_arr = NULL;
 	return (bucket);
 }

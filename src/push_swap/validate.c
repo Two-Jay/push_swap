@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 11:50:48 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/23 12:22:27 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	fn_insert_node(int value, int rank, t_bucket *data)
 	data->size++;
 }
 
-static int fn_fill_stack(int arg_size, t_bucket *data)
+static int fn_fill_stack(int arg_size, char **bucket, t_bucket *data)
 {
 	int ix;
 	int value;
@@ -67,8 +67,7 @@ static int fn_fill_stack(int arg_size, t_bucket *data)
 	value = 0;
 	while (ix < arg_size)
 	{
-		value = data->input_arr[ix];
-		// printf("[%d][%d]\n", ix, value);
+		value = ft_atoi(bucket[ix]);
 		rank = fn_find_value(value, data->input_arr, arg_size);
 		if (rank != -1 && !fn_check_dupvalue(value, data->a))
 			fn_insert_node(value, rank, data);
@@ -94,6 +93,7 @@ static int fn_fill_arr(int arg_size, char **bucket, t_bucket *data)
 
 	ix = 0;
 	err_flag = 0;
+	data->input_arr = (int *)ft_calloc(sizeof(int), arg_size);
 	while (ix < arg_size)
 	{
 		err_flag = ft_isable_strtonbr(bucket[ix]);
@@ -103,6 +103,7 @@ static int fn_fill_arr(int arg_size, char **bucket, t_bucket *data)
 			ft_strerr("Error : an invalid param\n");
 		ix++;
 	}
+	fn_bubblesort(data->input_arr, arg_size);
 	return (0);
 }
 
@@ -118,16 +119,12 @@ int fn_validate_input(int argc, char **argv, t_bucket *data)
 	if (!bucket)
 		exit(EXIT_FAILURE);
 	arg_size = fn_check_bucket_size(bucket);
-	// ix = 0;
-	// while (bucket[ix])
-	// 	printf("[%s]\n", bucket[ix++]);
 	ix = 0;
 	value = 0;
 	err_flag = 0;
 	if (argc != 2)
 		ft_strerr("Error : invalid parameters\n");
 	fn_fill_arr(arg_size, bucket, data);
-	fn_fill_stack(arg_size, data);
-	fn_bubblesort(data->input_arr, data->size);
+	fn_fill_stack(arg_size, bucket, data);
 	return (0);
 }
