@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:32:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 14:47:11 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/24 22:20:11 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_bucket	*ps_bucketnew(void)
 	bucket->size = 0;
 	bucket->count = 0;
 	bucket->arg_type = 0;
+	bucket->arg_size = 0;
 	bucket->input_arr = NULL;
+	bucket->input_arr_str = NULL;
 	return (bucket);
 }

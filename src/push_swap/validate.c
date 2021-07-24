@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 14:50:44 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/24 22:20:19 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void fn_check_validate_type(int argc, char **argv, t_bucket *data)
 {
 	int count;
 
-	count = ft_count_word(argv[0], ' ');
+	count = ft_count_word(argv[1], ' ');
 	if (count > 1 && argc == 2)
 		data->arg_type = STR_ARG;
 	else

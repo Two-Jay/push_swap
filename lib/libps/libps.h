@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 14:46:51 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/24 22:19:42 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ typedef struct	s_bucket
 	t_stack *b;
 
 	int *input_arr;
+	char **input_arr_str;
 	int	size;
 	int count;
 	int arg_type;
+	int arg_size;
 }				t_bucket;
 
 // 여기에는 push_swap 프젝에 필요한 더블드 링크드 리스트와 스텍의 정보만 담을 것.
