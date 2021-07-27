@@ -6,15 +6,15 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 02:01:58 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 02:34:19 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 04:24:12 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int		fn_dlstprint(t_stack *stack)
+int	fn_dlstprint(t_stack *stack)
 {
-	int	ix;
+	int		ix;
 	t_dlst	*ptr;
 
 	ix = 0;

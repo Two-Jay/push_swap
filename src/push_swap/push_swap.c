@@ -6,16 +6,16 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 03:40:12 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 04:23:52 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int fn_validate_input(int argc, char **argv, t_bucket *data)
+int	fn_validate_input(int argc, char **argv, t_bucket *data)
 {
 	int	ix;
-	int value;
+	int	value;
 	int	err_flag;
 
 	ix = 0;
@@ -59,9 +59,6 @@ void	fn_clear_memory(t_bucket *data)
 	free(data->a);
 	free(data->b);
 	free(data->input_arr);
-	while (data->input_arr_str[ix])
-		free(data->input_arr_str[ix++]);
-	free(data->input_arr_str);
 	free(data);
 }
 
@@ -72,6 +69,6 @@ int	main(int argc, char **argv)
 	data = ps_bucketnew();
 	fn_validate_input(argc, argv, data);
 	fn_push_swap(data);
-	// fn_clear_memory(data);
+	fn_clear_memory(data);
 	return (0);
 }

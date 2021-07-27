@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 03:48:19 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 04:24:34 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	fn_read_inputcommand(t_bucket *data)
 			ft_strerr("Error\n");
 		free(line);
 	}
+	free(line);
 	return (0);
 }
 
@@ -90,6 +91,6 @@ int	main(int argc, char **argv)
 	fn_validate_input(argc, argv, data);
 	fn_read_inputcommand(data);
 	fn_check_sorting(data);
-	// fn_clear_memory(data);
-	return (data->count);
+	fn_clear_memory(data);
+	return (0);
 }

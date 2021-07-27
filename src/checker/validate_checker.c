@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 03:36:24 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 04:04:45 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ int	fn_fill_arr(t_bucket *data)
 			ft_strerr("Error\n");
 		ix++;
 	}
-	fn_bubblesort(data->input_arr, data->arg_size);
 	return (0);
 }
