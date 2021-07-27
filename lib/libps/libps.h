@@ -62,7 +62,7 @@ t_dlst		*ps_dlstpop_front(t_stack *stack);
 t_dlst		*ps_dlstprev(t_dlst *node, unsigned int step);
 int			ps_dlstswap(t_dlst *node);
 int			ps_dlstprint(t_stack *stack);
-int 		ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag);
+int			ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag);
 int			ps_indexOf(t_stack *stack, int rank);
 
 void		ps_inst_sa(t_bucket *bucket, int ss_flag, int checker_flag);

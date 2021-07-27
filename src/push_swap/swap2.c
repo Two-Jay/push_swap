@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-static void	fn_sweep_value_into_chunk(t_bucket *data, 
+static void	fn_sweep_value_into_chunk(t_bucket *data,
 			int chunk_size, int chunk_nbr)
 {
 	int	hold_first;
@@ -50,7 +50,7 @@ static void	fn_put_front_lowest_atop_to_b(t_bucket *data)
 	}
 	else if (data->a->top != NULL)
 	{
-		while (!(data->a->top->rank < data->b->top->rank) 
+		while (!(data->a->top->rank < data->b->top->rank)
 			&& !(data->a->top->rank > data->b->bottom->rank))
 			ps_inst_rb(data, 0, 0);
 		lowest_rank = data->b->top->rank;

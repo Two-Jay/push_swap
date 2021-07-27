@@ -14,7 +14,7 @@
 
 static char	*ft_call_parserset(char *fmt, t_info *info, va_list *ap)
 {
-	char *origin;
+	char	*origin;
 
 	origin = fmt;
 	fmt++;
@@ -43,7 +43,7 @@ static void	ft_init_info(t_info *info)
 
 static int	ft_printf_call_handler(t_info *info, va_list *ap)
 {
-	int print_len;
+	int	print_len;
 
 	print_len = 0;
 	if (info->type == 'c' || info->type == '%')
@@ -52,8 +52,9 @@ static int	ft_printf_call_handler(t_info *info, va_list *ap)
 		print_len = ft_print_s(info, ap);
 	if (info->type == 'p')
 		print_len = ft_print_addr(info, ap);
-	if (info->type == 'd' || info->type == 'i' || info->type == 'u' ||
-	info->type == 'x' || info->type == 'X')
+	if (info->type == 'd' || info->type == 'i' || info->type == 'u')
+		print_len = ft_print_nbr(info, ap);
+	if (info->type == 'x' || info->type == 'X')
 		print_len = ft_print_nbr(info, ap);
 	return (print_len);
 }
@@ -79,10 +80,10 @@ static int	do_printf(char *fmt, va_list *ap)
 	return (ret);
 }
 
-int			ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	int		print_len;
-	va_list ap;
+	va_list	ap;
 	t_info	*info;
 
 	print_len = 0;

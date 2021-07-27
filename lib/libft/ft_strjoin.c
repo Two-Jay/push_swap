@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char	*set_memory(const char *s1, const char *s2, 
+static char	*set_memory(const char *s1, const char *s2,
 		unsigned int *s1_l, unsigned int *s2_l)
 {
 	char	*ret;

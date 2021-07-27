@@ -26,7 +26,7 @@
 # define FALSE 0
 # define TRUE 1
 
-typedef struct	s_struct
+typedef struct s_struct
 {
 	int			zeropad;
 	int			left;

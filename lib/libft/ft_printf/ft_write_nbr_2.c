@@ -17,8 +17,8 @@ int	ft_define_widthpad_l_nbr(t_info *info, int nbr_l)
 	int	ret;
 
 	ret = info->width;
-	if (info->input_negative == TRUE ||
-		(info->input_negative == FALSE && info->sign != 0))
+	if (info->input_negative == TRUE || (info->input_negative == FALSE
+			&& info->sign != 0))
 		ret -= (1 + ft_getmax(info->precision, nbr_l));
 	else
 		ret -= ft_getmax(info->precision, nbr_l);

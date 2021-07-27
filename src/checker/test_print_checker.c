@@ -12,9 +12,9 @@
 
 #include "../../includes/push_swap.h"
 
-int		fn_dlstprint(t_stack *stack)
+int	fn_dlstprint(t_stack *stack)
 {
-	int	ix;
+	int		ix;
 	t_dlst	*ptr;
 
 	ix = 0;

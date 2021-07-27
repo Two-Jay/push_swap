@@ -21,7 +21,7 @@ static void	ft_putnbr(long long nbr, int base_l, char *base)
 
 static int	ft_write_sign(t_info *info)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	if (info->input_negative == TRUE)
@@ -33,7 +33,7 @@ static int	ft_write_sign(t_info *info)
 
 static int	ft_write_prcspad(int prcspad_l)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	while (ret < prcspad_l)
@@ -41,11 +41,11 @@ static int	ft_write_prcspad(int prcspad_l)
 	return (ret);
 }
 
-int			ft_write_addr(t_info *info, long long nbr, int nbr_l)
+int	ft_write_addr(t_info *info, long long nbr, int nbr_l)
 {
-	int ret;
-	int prcspad_l;
-	int base_l;
+	int	ret;
+	int	prcspad_l;
+	int	base_l;
 
 	ret = 0;
 	prcspad_l = ft_define_prcspad_l_addr(info, nbr_l);
@@ -59,7 +59,7 @@ int			ft_write_addr(t_info *info, long long nbr, int nbr_l)
 	return (ret);
 }
 
-int			ft_print_addr(t_info *info, va_list *ap)
+int	ft_print_addr(t_info *info, va_list *ap)
 {
 	long long	addr;
 	char		*base;

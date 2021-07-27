@@ -18,12 +18,11 @@ char	*ft_substr(char const *src, unsigned int start, size_t len)
 
 	if (!src)
 		return (NULL);
-	if (!(ret = (char *)malloc(len + 1)))
+	ret = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ret)
 		return (NULL);
 	while (len--)
-	{
 		*(ret++) = src[start++];
-	}
 	*ret = '\0';
 	return (ret);
 }

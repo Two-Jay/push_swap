@@ -87,7 +87,7 @@ int	fn_fill_arr(t_bucket *data)
 	{
 		err_flag = ft_isable_strtonbr(data->input_arr_str[ix]);
 		if (!err_flag)
-			data->input_arr[ix] = ft_atoi_covf(data->input_arr_str[ix], 
+			data->input_arr[ix] = ft_atoi_covf(data->input_arr_str[ix],
 					&err_flag);
 		if (err_flag)
 			ft_strerr("Error\n");

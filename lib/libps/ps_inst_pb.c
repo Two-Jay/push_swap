@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "./libps.h"
-#include <stdio.h>
 
 void	ps_inst_pb(t_bucket *bucket, int checker_flag)
 {
