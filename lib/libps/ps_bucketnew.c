@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:32:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/24 22:20:11 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:40:35 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_bzero(void *dst, size_t n)
 {
-	unsigned char *temp;
+	unsigned char	*temp;
 
 	if (!dst)
 		return ;
@@ -29,7 +29,8 @@ static void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	if (!(ptr = malloc(count * size)))
+	ptr = malloc(count * size);
+	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, (count * size));
 	return (ptr);

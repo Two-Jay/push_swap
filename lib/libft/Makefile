@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 02:25:46 by jseo              #+#    #+#              #
-#    Updated: 2021/07/22 18:54:37 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/28 03:02:46 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,20 @@ BONUS			=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 					ft_lstmap.c ft_lstnew.c ft_lstsize.c
 BONUS_OBJS		= $(BONUS:.c=.o)
 
+PRINTF_DRC		= ./ft_printf/
+PRINTF_SRCS		= $(PRINTF_DRC)ft_printf.c \
+					$(PRINTF_DRC)ft_printf_checker.c \
+					$(PRINTF_DRC)ft_printf_utils_1.c \
+					$(PRINTF_DRC)ft_printf_utils_2.c \
+					$(PRINTF_DRC)ft_write_addr_1.c \
+					$(PRINTF_DRC)ft_write_addr_2.c \
+					$(PRINTF_DRC)ft_write_nbr_1.c \
+					$(PRINTF_DRC)ft_write_nbr_2.c \
+					$(PRINTF_DRC)ft_write_c.c \
+					$(PRINTF_DRC)ft_write_s.c
+
+PRINTF_OBJS		= $(PRINTF_SRCS:.c=.o)
+
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
@@ -36,14 +50,14 @@ NAME			= libft.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(BONUS_OBJS)
-				@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
+$(NAME):		$(OBJS) $(BONUS_OBJS) $(PRINTF_OBJS)
+				@ar rc $(NAME) $(OBJS) $(BONUS_OBJS) $(PRINTF_OBJS)
 
 %.o : %.c
 	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 
 clean:
-				@$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS) $(BONUS_OBJS) $(PRINTF_OBJS)
 
 fclean:			clean
 				@$(RM) $(NAME)

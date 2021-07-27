@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 22:54:25 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 06:06:47 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:41:42 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 ** especially in push_swap project, rra_flag is used for 
 */
 
-int 		ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag)
+int	ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag)
 {
 	int		ix;
 	t_dlst	*nptr;
-	
+
 	if (stack->size == 0 || rank < 0 || !stack->top)
 		return (-1);
 	ix = 0;

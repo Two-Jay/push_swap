@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:24:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/27 05:08:15 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:43:00 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ps_inst_rrb(t_bucket *bucket, int rrr_flag, int checker_flag)
 {
-	unsigned int ix;
-	t_dlst	*old_bottom;
+	unsigned int	ix;
+	t_dlst			*old_bottom;
 
 	if (bucket->b->size == 0)
 		return ;

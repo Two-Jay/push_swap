@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 02:42:57 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/25 03:20:35 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:42:11 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ps_indexOf(t_stack *stack, int rank)
 {
-	int ix;
-	t_dlst *nptr;
-	
+	int		ix;
+	t_dlst	*nptr;
+
 	ix = 0;
 	nptr = stack->top;
 	while (nptr != NULL && ix < stack->size)

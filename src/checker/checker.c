@@ -6,27 +6,13 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/27 07:27:12 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 03:48:19 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 
-void fn_print_stack(t_bucket *data, int flag)
-{
-	if (flag == 1)
-		printf("===== before ===\n");
-	if (flag == 2)
-		printf("===== after ===\n");
-	printf("A : ");
-	ps_dlstprint(data->a);
-	printf("B : ");
-	ps_dlstprint(data->b);
-	if (flag == 2)
-		printf("result : [%d]\n", data->count);
-}
-
-int fn_check_command(t_bucket *data, char *line)
+int	fn_check_command(t_bucket *data, char *line)
 {
 	if (ft_strequel("pa", line))
 		ps_inst_pa(data, 1);
@@ -55,19 +41,18 @@ int fn_check_command(t_bucket *data, char *line)
 	return (0);
 }
 
-void fn_check_sorting(t_bucket *data)
+void	fn_check_sorting(t_bucket *data)
 {
 	if (ps_stack_issorted_asc(data->a))
-		printf("OK\n");
+		ft_printf("OK\n");
 	else
-		printf("KO\n");
-	fn_print_stack(data, 2);
+		ft_printf("KO\n");
 }
 
-int fn_read_inputcommand(t_bucket *data)
+int	fn_read_inputcommand(t_bucket *data)
 {
-	char *line;
-	int	err_flag;
+	char	*line;
+	int		err_flag;
 
 	err_flag = 0;
 	while (ft_strgnl(0, &line))
@@ -80,13 +65,31 @@ int fn_read_inputcommand(t_bucket *data)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	fn_validate_input(int argc, char **argv, t_bucket *data)
 {
-	t_bucket *data;
+	int	ix;
+	int	value;
+	int	err_flag;
+
+	ix = 0;
+	value = 0;
+	err_flag = 0;
+	if (argc == 1)
+		ft_strerr("Error\n");
+	fn_check_setting_type(argc, argv, data);
+	fn_fill_arr(data);
+	fn_fill_stack(data);
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_bucket	*data;
 
 	data = ps_bucketnew();
 	fn_validate_input(argc, argv, data);
 	fn_read_inputcommand(data);
 	fn_check_sorting(data);
+	// fn_clear_memory(data);
 	return (data->count);
 }

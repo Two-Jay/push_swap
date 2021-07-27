@@ -6,13 +6,13 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:11:15 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 08:50:28 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:41:13 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
 
-int		ps_dlstadd_front(t_stack *stack, t_dlst *new_top)
+int	ps_dlstadd_front(t_stack *stack, t_dlst *new_top)
 {
 	t_dlst	*old_top;
 	t_dlst	*old_bottom;

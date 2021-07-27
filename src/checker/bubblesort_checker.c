@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubblesort.c                                       :+:      :+:    :+:   */
+/*   bubblesort_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:53:38 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/20 18:09:39 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:24:05 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void fn_swap(int *a, int *b)
+static void	fn_swap(int *a, int *b)
 {
-	int tmp;
-	
+	int	tmp;
+
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
 
-int		fn_bubblesort(int *a, int size)
+int	fn_bubblesort(int *a, int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < (size - 1))
@@ -41,12 +41,12 @@ int		fn_bubblesort(int *a, int size)
 	return (0);
 }
 
-int		fn_is_sorted(int *arr, int size)
+int	fn_is_sorted(int *arr, int size)
 {
-	int i;
-	int j;
-	int sorted;
-	
+	int	i;
+	int	j;
+	int	sorted;
+
 	sorted = 1;
 	i = 0;
 	while (i < (size - 1))
@@ -57,7 +57,7 @@ int		fn_is_sorted(int *arr, int size)
 			if (arr[j] > arr[j + 1])
 			{
 				sorted = 0;
-				break;
+				break ;
 			}
 			j++;
 		}

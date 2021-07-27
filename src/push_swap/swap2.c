@@ -6,18 +6,18 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 06:54:36 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/27 08:18:49 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:31:43 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-
-void fn_sweep_value_into_chunk(t_bucket *data, int chunk_size, int chunk_nbr)
+static void	fn_sweep_value_into_chunk(t_bucket *data, 
+			int chunk_size, int chunk_nbr)
 {
-	int hold_first;
-	int hold_second;
-	
+	int	hold_first;
+	int	hold_second;
+
 	if (data->a->size == 0)
 		return ;
 	else
@@ -33,9 +33,9 @@ void fn_sweep_value_into_chunk(t_bucket *data, int chunk_size, int chunk_nbr)
 	}
 }
 
-void fn_put_front_lowest_atop_to_b(t_bucket *data)
+static void	fn_put_front_lowest_atop_to_b(t_bucket *data)
 {
-	static int lowest_rank;
+	static int	lowest_rank;
 
 	if (data->b->size == 0)
 	{
@@ -60,24 +60,56 @@ void fn_put_front_lowest_atop_to_b(t_bucket *data)
 	}
 }
 
-
-int fn_push_swap_t3_on_b(t_bucket *data)
+int	fn_push_swap_t100(t_bucket *data, int chunk_nbr, int chunk_size)
 {
-	if (data->b->size >= 3 && !ps_stack_issorted_asc(data->b))
+	int	ix;
+	int	jx;
+
+	ix = 0;
+	while (ix < chunk_nbr)
 	{
-		if ((data->b->top->value < data->b->top->next->next->value 
-		&& data->b->top->value < data->b->top->next->value))
+		jx = 0;
+		while (jx < chunk_size)
 		{
-			ps_inst_rrb(data, 0, 0);
-			ps_inst_sb(data, 0, 0);
+			fn_sweep_value_into_chunk(data, chunk_size, ix);
+			fn_put_front_lowest_atop_to_b(data);
+			jx++;
 		}
-		if (data->b->top->value > data->b->top->next->next->value 
-		&& data->b->top->value > data->b->top->next->value)
-			ps_inst_rb(data, 0, 0);
-		if (data->b->top->value > data->b->top->next->next->value)
-			ps_inst_rrb(data, 0, 0);
-		if (data->b->top->value > data->b->top->next->value)
-			ps_inst_sb(data, 0, 0);
+		ix++;
 	}
+	ix = data->b->size;
+	while (ix--)
+	{
+		fn_findup_by_rank_b(data, ix);
+		ps_inst_pa(data, 0);
+	}
+	ps_inst_ra(data, 0, 0);
+	return (data->count);
+}
+
+int	fn_push_swap_o100(t_bucket *data, int chunk_nbr, int chunk_size)
+{
+	int	ix;
+	int	jx;
+
+	ix = 0;
+	while (ix < chunk_nbr)
+	{
+		jx = 0;
+		while (jx < chunk_size)
+		{
+			fn_sweep_value_into_chunk(data, chunk_size, ix);
+			fn_put_front_lowest_atop_to_b(data);
+			jx++;
+		}
+		ix++;
+	}
+	ix = data->b->size;
+	while (ix--)
+	{
+		fn_findup_by_rank_b(data, ix);
+		ps_inst_pa(data, 0);
+	}
+	ps_inst_ra(data, 0, 0);
 	return (data->count);
 }

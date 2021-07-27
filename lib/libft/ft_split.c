@@ -6,13 +6,13 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 23:41:52 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 12:09:41 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:52:49 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count_word(const char *src, char c)
+static int	ft_count_word(const char *src, char c)
 {
 	unsigned int	count;
 
@@ -28,11 +28,10 @@ static int		ft_count_word(const char *src, char c)
 	return (count);
 }
 
-static int		ft_wordlen(const char *src, char c)
+static int	ft_wordlen(const char *src, char c)
 {
 	unsigned int	len;
 
-	
 	len = 0;
 	while (*src != c && *src)
 	{
@@ -42,7 +41,7 @@ static int		ft_wordlen(const char *src, char c)
 	return (len);
 }
 
-static void		ft_free_error(char **bucket, unsigned int count)
+static void	ft_free_error(char **bucket, unsigned int count)
 {
 	unsigned int	ix;
 
@@ -55,7 +54,7 @@ static void		ft_free_error(char **bucket, unsigned int count)
 	free(bucket);
 }
 
-static char		**ft_fillbucket(const char *src, unsigned int count,
+static char	**ft_fillbucket(const char *src, unsigned int count,
 		char c, char **bucket)
 {
 	unsigned int	ix;
@@ -84,12 +83,11 @@ static char		**ft_fillbucket(const char *src, unsigned int count,
 	return (bucket);
 }
 
-
-char			**ft_split(const char *src, char c)
+char	**ft_split(const char *src, char c)
 {
 	char			**bucket;
 	unsigned int	count;
-	int ix;
+	int				ix;
 
 	if (!src)
 		return (NULL);

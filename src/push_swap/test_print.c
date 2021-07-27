@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_dlstprint.c                                     :+:      :+:    :+:   */
+/*   test_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/25 23:19:13 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/10 09:27:42 by jekim            ###   ########seoul.kr  */
+/*   Created: 2021/07/28 02:01:58 by jekim             #+#    #+#             */
+/*   Updated: 2021/07/28 02:34:19 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libps.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
 
-int		ps_dlstprint(t_stack *stack)
+int		fn_dlstprint(t_stack *stack)
 {
 	int	ix;
 	t_dlst	*ptr;
@@ -27,12 +26,26 @@ int		ps_dlstprint(t_stack *stack)
 	while (ix < stack->size)
 	{
 		if (ix == stack->size - 1)
-			printf("%d", ptr->value);
+			ft_printf("%d", ptr->value);
 		else
-			printf("%d ", ptr->value);
+			ft_printf("%d ", ptr->value);
 		ptr = ptr->next;
 		ix++;
 	}
-	printf("\n");
+	ft_printf("\n");
 	return (EXIT_SUCCESS);
+}
+
+void	fn_print_stack(t_bucket *data, int flag)
+{
+	if (flag == 1)
+		ft_printf("===== before ===\n");
+	if (flag == 2)
+		ft_printf("===== after ===\n");
+	ft_printf("A : ");
+	fn_dlstprint(data->a);
+	ft_printf("B : ");
+	fn_dlstprint(data->b);
+	if (flag == 2)
+		ft_printf("result : [%d]\n", data->count);
 }

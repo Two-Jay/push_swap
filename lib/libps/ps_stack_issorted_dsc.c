@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:11:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/27 07:26:31 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 02:43:33 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ps_stack_issorted_dsc(t_stack *stack)
 {
-	int ix;
-	int flag;
-	t_dlst *nptr;
+	int		ix;
+	int		flag;
+	t_dlst	*nptr;
 
 	ix = 0;
 	flag = 1;
@@ -26,7 +26,7 @@ int	ps_stack_issorted_dsc(t_stack *stack)
 		if (nptr->value < nptr->next->value)
 		{
 			flag = 0;
-			break;
+			break ;
 		}
 		nptr = nptr->next;
 		ix++;

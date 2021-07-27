@@ -6,68 +6,72 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 00:22:04 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 03:40:12 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	fn_print_stack(t_bucket *data, int flag)
-{
-	if (flag == 1)
-		printf("===== before ===\n");
-	if (flag == 2)
-		printf("===== after ===\n");
-	printf("A : ");
-	ps_dlstprint(data->a);
-	printf("B : ");
-	ps_dlstprint(data->b);
-	if (flag == 2)
-		printf("result : [%d]\n", data->count);
-}
-
-int		n_print_dlst_detail(t_stack *stack)
+int fn_validate_input(int argc, char **argv, t_bucket *data)
 {
 	int	ix;
-	t_dlst	*ptr;
+	int value;
+	int	err_flag;
 
 	ix = 0;
-	if (!stack)
-		return (EXIT_FAILURE);
-	if (stack->size == 0 && stack->top == NULL)
-		return (printf("\n"));
-	ptr = stack->top;
-	while (ix < stack->size)
-	{
-		if (ix == stack->size - 1)
-		{
-			printf("index = [%d]\n", ix);
-			printf("value = [%d]\n", ptr->value);
-			printf("rank = [%d]\n", ptr->rank);
-			printf("next value = [%d]\n", ptr->next->value);
-		}
-		else
-		{
-			printf("index [%d]\n", ix);
-			printf("value = [%d]\n", ptr->value);
-			printf("rank = [%d]\n", ptr->rank);
-			printf("next value = [%d]\n", ptr->next->value);
-		}
-		ptr = ptr->next;
-		ix++;
-	}
-	printf("\n");
-	return (EXIT_SUCCESS);
+	value = 0;
+	err_flag = 0;
+	if (argc == 1)
+		ft_strerr("Error\n");
+	fn_check_setting_type(argc, argv, data);
+	fn_fill_arr(data);
+	fn_fill_stack(data);
+	return (0);
 }
 
-int main(int argc, char **argv)
+int	fn_push_swap(t_bucket *data)
 {
-	t_bucket *data;
+	if (data->size != 1 && !ps_stack_issorted_asc(data->a))
+	{
+		if (data->size > 1 && data->size <= 3)
+			fn_push_swap_t3(data);
+		else if (data->size > 3 && data->size <= 5)
+			fn_push_swap_t5(data);
+		else if (data->size > 5 && data->size <= 7)
+			fn_push_swap_t7(data);
+		else if (data->size > 7 && data->size <= 100)
+			fn_push_swap_t100(data, 5, 20);
+		else
+			fn_push_swap_o100(data, 20, 40);
+	}
+	return (data->count);
+}
+
+void	fn_clear_memory(t_bucket *data)
+{
+	int	ix;
+
+	ix = 0;
+	if (data->a->size > 0)
+		ps_dlstclear(data->a);
+	if (data->b->size > 0)
+		ps_dlstclear(data->b);
+	free(data->a);
+	free(data->b);
+	free(data->input_arr);
+	while (data->input_arr_str[ix])
+		free(data->input_arr_str[ix++]);
+	free(data->input_arr_str);
+	free(data);
+}
+
+int	main(int argc, char **argv)
+{
+	t_bucket	*data;
 
 	data = ps_bucketnew();
 	fn_validate_input(argc, argv, data);
-	fn_print_stack(data, 1);
 	fn_push_swap(data);
-	fn_print_stack(data, 2);
+	// fn_clear_memory(data);
 	return (0);
 }

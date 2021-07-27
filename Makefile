@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/27 06:55:56 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/28 03:39:07 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,19 @@ CK_FILE_DIR	=	./src/checker/
 
 PS_FILE		=	push_swap.c \
 				validate.c	\
+				validate2.c	\
 				bubblesort.c	\
+				test_print.c	\
 				swap.c		\
 				swap2.c		\
 				utils.c
 
 CK_FILE		=	checker.c \
-				validate.c	\
-				bubblesort.c
+				clearmem.c	\
+				validate_checker.c	\
+				validate2_checker.c	\
+				test_print_checker.c	\
+				bubblesort_checker.c
 
 PS_OBJ_FILE	=	$(PS_FILE:.c=.o)
 CK_OBJ_FILE	=	$(CK_FILE:.c=.o)
@@ -56,20 +61,19 @@ $(OBJ_DIR)%.o : $(PS_FILE_DIR)%.c
 $(NAME)		:	$(PS_OBJ)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBPS_DIR)
-	@$(CC) $(CCFLAG) $(PS_OBJ) $(SNTZ) $(LIB) $(INCLUDE) -o $@
+	@$(CC) $(CCFLAG) $(PS_OBJ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
-
 
 bonus			:	all $(BNAME)
 
 $(OBJ_DIR)%.o : $(CK_FILE_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
+	@$(CC) $(CCFLAG) $(INCLUDE) $< -c -o $@
 
 $(BNAME)		:	$(CK_OBJ)
-	$(MAKE) -C $(LIBFT_DIR)
-	$(MAKE) -C $(LIBPS_DIR)
-	$(CC) $(CCFLAG) $(CK_OBJ) $(LIB) $(INCLUDE) -o $@
+	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBPS_DIR)
+	@$(CC) $(CCFLAG) $(CK_OBJ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(BNAME) program file was created *\033[0m"
 
 debug			:	re $(NAME)
