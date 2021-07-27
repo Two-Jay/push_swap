@@ -1,21 +1,32 @@
-#!/bin/bash
-make re
-
-# by jeonpark
-# 랜덤 생성 코드 by https://42born2code.slack.com/archives/CU6MU5TB7/p1618280285371100?thread_ts=1618252568.360600&cid=CU6MU5TB7
-​
-# push_swap 경로 설정해주세요
-# CNT : 원소 개수
-# LIMIT : 최대 operation 개수
-​
 CNT=$1
-LIMIT=$2
+LIMIT=700
+INDEX=0
+ITER=$2
+NUM_OVER=0
+MAX=$LIMIT
 ARG=`jot -r $CNT -2147483648 2147483647 | tr "\n" " "`
 NUM=`./push_swap $ARG | wc -l`
+SUM=0
+AVR=0
 ​
-while [ $NUM -lt $LIMIT ]
+while [ $INDEX -lt $ITER ]
 do
-echo $NUM
+echo "$INDEX	:	$NUM"
+if [ $NUM -ge $LIMIT ]; then
+NUM_OVER=`expr $NUM_OVER + 1`
+fi
+if [ $NUM -gt $MAX ]; then
+MAX=$NUM
+fi
 ARG=`jot -r $CNT -2147483648 2147483647 | tr "\n" " "`
 NUM=`./push_swap $ARG | wc -l`
+INDEX=`expr $INDEX + 1`
+SUM=`expr $SUM + $NUM`
 done
+AVR=`expr $SUM / $ITER`
+echo "$NUM_OVER overred operations for $ITER times"
+if [ $NUM_OVER -gt 0 ]; then
+echo "Biggest operation number : $MAX"
+echo "average operation number : $AVR"
+echo "fix it!!!!!!!!!!"
+fi

@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 23:09:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/24 22:19:42 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/27 07:26:59 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ typedef struct	s_bucket
 # define FALSE 0
 
 t_bucket	*ps_bucketnew(void);
-int		ps_stack_issorted(t_stack *stack);
+int		ps_stack_issorted_asc(t_stack *stack);
+int		ps_stack_issorted_dsc(t_stack *stack);
 
 int		ps_dlstadd_back(t_stack *stack, t_dlst *node);
 int		ps_dlstadd_front(t_stack *stack, t_dlst *node);
@@ -65,17 +66,18 @@ t_dlst	*ps_dlstprev(t_dlst *node, unsigned int step);
 int		ps_dlstswap(t_dlst *node);
 int		ps_dlstprint(t_stack *stack);
 int 	ps_dlstfind_idx(t_stack *stack, int rank, int *rra_flag);
+int		ps_indexOf(t_stack *stack, int rank);
 
-void	ps_inst_sa(t_bucket *bucket);
-void	ps_inst_sb(t_bucket *bucket);
-void	ps_inst_ss(t_bucket *bucket);
-void	ps_inst_pa(t_bucket *bucket);
-void	ps_inst_pb(t_bucket *bucket);
-void	ps_inst_ra(t_bucket *bucket);
-void	ps_inst_rb(t_bucket *bucket);
-void	ps_inst_rr(t_bucket *bucket);
-void	ps_inst_rra(t_bucket *bucket);
-void	ps_inst_rrb(t_bucket *bucket);
-void	ps_inst_rrr(t_bucket *bucket);
+void	ps_inst_sa(t_bucket *bucket, int ss_flag, int checker_flag);
+void	ps_inst_sb(t_bucket *bucket, int ss_flag, int checker_flag);
+void	ps_inst_ss(t_bucket *bucket, int checker_flag);
+void	ps_inst_pa(t_bucket *bucket, int checker_flag);
+void	ps_inst_pb(t_bucket *bucket, int checker_flag);
+void	ps_inst_ra(t_bucket *bucket, int rr_flag, int checker_flag);
+void	ps_inst_rb(t_bucket *bucket, int rr_flag, int checker_flag);
+void	ps_inst_rr(t_bucket *bucket, int checker_flag);
+void	ps_inst_rra(t_bucket *bucket, int rrr_flag, int checker_flag);
+void	ps_inst_rrb(t_bucket *bucket, int rrr_flag, int checker_flag);
+void	ps_inst_rrr(t_bucket *bucket, int checker_flag);
 
 #endif

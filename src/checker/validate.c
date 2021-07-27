@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate copy.c                                    :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/24 23:10:18 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/27 20:27:54 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,11 @@ static int fn_fill_arr(t_bucket *data)
 {
 	int ix;
 	int err_flag;
+	char **bucket;
 
 	ix = 0;
 	err_flag = 0;
+	bucket = NULL;
 	while (ix < data->arg_size)
 	{
 		err_flag = ft_isable_strtonbr(data->input_arr_str[ix]);

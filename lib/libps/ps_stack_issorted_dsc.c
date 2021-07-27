@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_inst_rrb.c                                      :+:      :+:    :+:   */
+/*   ps_stack_issorted_dsc.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 19:24:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/27 05:08:15 by jekim            ###   ########seoul.kr  */
+/*   Created: 2021/07/15 17:11:12 by jekim             #+#    #+#             */
+/*   Updated: 2021/07/27 07:26:31 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
 
-void	ps_inst_rrb(t_bucket *bucket, int rrr_flag, int checker_flag)
+int	ps_stack_issorted_dsc(t_stack *stack)
 {
-	unsigned int ix;
-	t_dlst	*old_bottom;
+	int ix;
+	int flag;
+	t_dlst *nptr;
 
-	if (bucket->b->size == 0)
-		return ;
 	ix = 0;
-	old_bottom = bucket->b->bottom;
-	bucket->b->top = old_bottom;
-	bucket->b->bottom = old_bottom->before;
-	if (!checker_flag && !rrr_flag)
-		write(1, "rrb\n", 4);
-	bucket->count++;
+	flag = 1;
+	nptr = stack->top;
+	while (ix < stack->size - 1)
+	{
+		if (nptr->value < nptr->next->value)
+		{
+			flag = 0;
+			break;
+		}
+		nptr = nptr->next;
+		ix++;
+	}
+	return (flag);
 }

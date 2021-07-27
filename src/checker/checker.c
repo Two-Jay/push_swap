@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 05:13:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/27 07:27:12 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ void fn_print_stack(t_bucket *data, int flag)
 int fn_check_command(t_bucket *data, char *line)
 {
 	if (ft_strequel("pa", line))
-		ps_inst_pa(data);
+		ps_inst_pa(data, 1);
 	else if (ft_strequel("pb", line))
-		ps_inst_pb(data);
+		ps_inst_pb(data, 1);
 	else if (ft_strequel("ra", line))
-		ps_inst_ra(data);
+		ps_inst_ra(data, 0, 1);
 	else if (ft_strequel("rb", line))
-		ps_inst_rb(data);
+		ps_inst_rb(data, 0, 1);
 	else if (ft_strequel("rr", line))
-		ps_inst_rr(data);
+		ps_inst_rr(data, 1);
 	else if (ft_strequel("sa", line))
-		ps_inst_sa(data);
+		ps_inst_sa(data, 0, 1);
 	else if (ft_strequel("sb", line))
-		ps_inst_sb(data);
+		ps_inst_sb(data, 0, 1);
 	else if (ft_strequel("ss", line))
-		ps_inst_ss(data);
+		ps_inst_ss(data, 1);
 	else if (ft_strequel("rra", line))
-		ps_inst_rra(data);
+		ps_inst_rra(data, 0, 1);
 	else if (ft_strequel("rrb", line))
-		ps_inst_rrb(data);
+		ps_inst_rrb(data, 0, 1);
 	else if (ft_strequel("rrr", line))
-		ps_inst_rrr(data);
+		ps_inst_rrr(data, 1);
 	else
 		return (1);
 	return (0);
@@ -57,7 +57,7 @@ int fn_check_command(t_bucket *data, char *line)
 
 void fn_check_sorting(t_bucket *data)
 {
-	if (ps_stack_issorted(data->a))
+	if (ps_stack_issorted_asc(data->a))
 		printf("OK\n");
 	else
 		printf("KO\n");
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 {
 	t_bucket *data;
 
-	data = ps_bucketnew(argc - 1);
+	data = ps_bucketnew();
 	fn_validate_input(argc, argv, data);
 	fn_read_inputcommand(data);
 	fn_check_sorting(data);

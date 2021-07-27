@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 01:12:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/22 06:00:37 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/27 05:15:14 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_isoverflow(long long nbr)
 {
-	if (nbr > INT_MAX)
+	if (nbr > 2147483647)
 		return (1);
-	else if (nbr < INT_MIN)
+	if ((nbr * -1) > 2147483648)
 		return (-1);
 	else
 		return (0);

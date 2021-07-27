@@ -6,29 +6,13 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/23 12:49:40 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 00:22:04 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int fn_print_input(t_bucket *data)
-{
-	int ix;
-	int value;
-
-	ix = 0;
-	while (ix < data->size)
-	{
-		value = data->input_arr[ix];
-		printf("%d ", value);
-		ix++;
-	}
-	printf("\n");
-	return (0);
-}
-
-void fn_print_stack(t_bucket *data, int flag)
+void	fn_print_stack(t_bucket *data, int flag)
 {
 	if (flag == 1)
 		printf("===== before ===\n");
@@ -42,24 +26,7 @@ void fn_print_stack(t_bucket *data, int flag)
 		printf("result : [%d]\n", data->count);
 }
 
-int ps_test(int count, void (*test_fn)(t_bucket *), t_bucket *data)
-{
-	int ix;
-	void (*fp)(t_bucket *);
-
-	ix = 0;
-	fp = test_fn;
-	while (ix < count)
-	{
-		fp(data);
-		printf("=======[%d]\n", ix);
-		fn_print_stack(data, 0);
-		ix++;
-	}
-	return (0);
-}
-
-int		fn_print_dlst_detail(t_stack *stack)
+int		n_print_dlst_detail(t_stack *stack)
 {
 	int	ix;
 	t_dlst	*ptr;
@@ -99,7 +66,8 @@ int main(int argc, char **argv)
 
 	data = ps_bucketnew();
 	fn_validate_input(argc, argv, data);
+	fn_print_stack(data, 1);
 	fn_push_swap(data);
-	fn_print_stack(data, 2); 
-	return (data->count);
+	fn_print_stack(data, 2);
+	return (0);
 }

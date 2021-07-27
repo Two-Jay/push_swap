@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_stack_issorted.c                                :+:      :+:    :+:   */
+/*   ps_stack_issorted_asc.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:11:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/16 01:20:46 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/27 18:58:53 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
 
-int	ps_stack_issorted(t_stack *stack)
+int	ps_stack_issorted_asc(t_stack *stack)
 {
 	int ix;
 	int flag;

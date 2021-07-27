@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_inst_rrb.c                                      :+:      :+:    :+:   */
+/*   ps_indexOf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 19:24:56 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/27 05:08:15 by jekim            ###   ########seoul.kr  */
+/*   Created: 2021/07/25 02:42:57 by jekim             #+#    #+#             */
+/*   Updated: 2021/07/25 03:20:35 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
 
-void	ps_inst_rrb(t_bucket *bucket, int rrr_flag, int checker_flag)
+int	ps_indexOf(t_stack *stack, int rank)
 {
-	unsigned int ix;
-	t_dlst	*old_bottom;
-
-	if (bucket->b->size == 0)
-		return ;
+	int ix;
+	t_dlst *nptr;
+	
 	ix = 0;
-	old_bottom = bucket->b->bottom;
-	bucket->b->top = old_bottom;
-	bucket->b->bottom = old_bottom->before;
-	if (!checker_flag && !rrr_flag)
-		write(1, "rrb\n", 4);
-	bucket->count++;
+	nptr = stack->top;
+	while (nptr != NULL && ix < stack->size)
+	{
+		if (nptr->rank == rank)
+			return (ix);
+		else
+			nptr = nptr->next;
+		ix++;
+	}
+	return (-1);
 }

@@ -6,15 +6,17 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:24:12 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/19 20:28:48 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/27 08:12:53 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libps.h"
 
-void	ps_inst_rr(t_bucket *bucket)
+void	ps_inst_rr(t_bucket *bucket, int checker_flag)
 {
-	ps_inst_ra(bucket);
-	ps_inst_rb(bucket);
+	ps_inst_ra(bucket, 1, checker_flag);
+	ps_inst_rb(bucket, 1, checker_flag);
+	if (!checker_flag)
+		write(1, "rr\n", 3);
 	bucket->count--;
 }

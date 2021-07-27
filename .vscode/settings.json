@@ -25,7 +25,10 @@
 		"ratio": "c",
 		"system_error": "c",
 		"tuple": "c",
-		"type_traits": "c"
+		"type_traits": "c",
+		"climits": "cpp",
+		"sstream": "cpp",
+		"streambuf": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

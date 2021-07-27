@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/23 10:19:35 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/07/27 06:55:56 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BNAME		=	checker
 
 CC			=	gcc
 CCFLAG		=	-Wall -Wextra -Werror
-SNTZ		=	-fsanitize=address -g3
+SNTZ		=	-fsanitize=address -g
 INCLUDE		=	-I ./includes -I$(LIBFT_DIR) -I$(LIBPS_DIR)
 LIB			=	-L$(LIBFT_DIR) -L$(LIBPS_DIR) -lft -lps
 
@@ -33,6 +33,7 @@ PS_FILE		=	push_swap.c \
 				validate.c	\
 				bubblesort.c	\
 				swap.c		\
+				swap2.c		\
 				utils.c
 
 CK_FILE		=	checker.c \
@@ -55,11 +56,11 @@ $(OBJ_DIR)%.o : $(PS_FILE_DIR)%.c
 $(NAME)		:	$(PS_OBJ)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBPS_DIR)
-	@$(CC) $(CCFLAG) $(PS_OBJ) $(LIB) $(INCLUDE) -o $@
+	@$(CC) $(CCFLAG) $(PS_OBJ) $(SNTZ) $(LIB) $(INCLUDE) -o $@
 	@echo "\033[0;92m* $(NAME) program file was created *\033[0m"
 
 
-bonus			:	$(BNAME)
+bonus			:	all $(BNAME)
 
 $(OBJ_DIR)%.o : $(CK_FILE_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
@@ -89,5 +90,7 @@ fclean		:	clean
 
 
 re			:	fclean all
+
+rebonus		: 	fclean bonus
 
 .PHONY: all, clean, fclean, re
