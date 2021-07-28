@@ -6,31 +6,34 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 06:54:36 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 02:31:43 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/29 04:10:54 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	fn_sweep_value_into_chunk(t_bucket *data,
+static int	fn_sweep_value_into_chunk(t_bucket *data,
 			int chunk_size, int chunk_nbr)
 {
 	int	hold_first;
 	int	hold_second;
 
 	if (data->a->size == 0)
-		return ;
+		return (0);
 	else
 	{
 		hold_first = find_node_chunk(data, 1 + (chunk_size * chunk_nbr),
 				chunk_size * (chunk_nbr + 1), 1);
 		hold_second = find_node_chunk(data, 1 + (chunk_size * chunk_nbr),
 				chunk_size * (chunk_nbr + 1), -1);
+		if (hold_first == -1 && hold_second == -1)
+			return (0);
 		if (hold_first <= hold_second)
 			fn_findup_by_index_a(data, hold_first, 1);
 		else if (hold_first > hold_second)
 			fn_findup_by_index_a(data, hold_second, -1);
 	}
+	return (1);
 }
 
 static void	fn_put_front_lowest_atop_to_b(t_bucket *data)
@@ -47,17 +50,11 @@ static void	fn_put_front_lowest_atop_to_b(t_bucket *data)
 		if (data->a->top->rank < data->b->top->rank)
 			lowest_rank = data->a->top->rank;
 		ps_inst_pb(data, 0);
+		if (data->b->top->rank == lowest_rank)
+			ps_inst_sb(data, 0, 0);
 	}
 	else if (data->a->top != NULL)
-	{
-		while (!(data->a->top->rank < data->b->top->rank)
-			&& !(data->a->top->rank > data->b->bottom->rank))
-			ps_inst_rb(data, 0, 0);
-		lowest_rank = data->b->top->rank;
-		if (data->a->top->rank < data->b->top->rank)
-			lowest_rank = data->a->top->rank;
 		ps_inst_pb(data, 0);
-	}
 }
 
 int	fn_push_swap_t100(t_bucket *data, int chunk_nbr, int chunk_size)

@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 11:41:07 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 20:12:20 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@ void	fn_clear_memory(t_bucket *data)
 	free(data->a);
 	free(data->b);
 	free(data->input_arr);
-	while (data->input_arr_str[ix])
-		free(data->input_arr_str[ix++]);
-	free(data->input_arr_str);
+	if (data->arg_type == STR_ARG)
+	{
+		while (data->input_arr_str[ix])
+			free(data->input_arr_str[ix++]);
+		free(data->input_arr_str);
+	}
 	free(data);
 }
 
@@ -71,6 +74,7 @@ int	main(int argc, char **argv)
 	data = ps_bucketnew();
 	fn_validate_input(argc, argv, data);
 	fn_push_swap(data);
+	fn_print_stack(data, 2);
 	fn_clear_memory(data);
 	return (0);
 }

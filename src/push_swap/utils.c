@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 22:22:59 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 02:34:16 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/07/28 20:58:15 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,5 @@ int	find_node_chunk(t_bucket *data, int r_min, int r_max, int drc)
 		nptr = fp(nptr, 1);
 		ix++;
 	}
-	return (ix);
+	return (-1);
 }
