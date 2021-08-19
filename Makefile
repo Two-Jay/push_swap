@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/07/28 03:39:07 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/08/20 00:57:33 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ PS_FILE_DIR	=	./src/push_swap/
 CK_FILE_DIR	=	./src/checker/
 
 PS_FILE		=	push_swap.c \
-				validate.c	\
-				validate2.c	\
+				validate.c \
+				validate2.c \
 				bubblesort.c	\
 				test_print.c	\
 				swap.c		\

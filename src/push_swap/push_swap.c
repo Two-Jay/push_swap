@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 20:12:20 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/08/20 02:33:52 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,9 @@
 
 void	fn_validate_input(int argc, char **argv, t_bucket *data)
 {
-	int	ix;
-	int	value;
-	int	err_flag;
-
-	ix = 0;
-	value = 0;
-	err_flag = 0;
 	if (argc == 1)
 		return (exit(EXIT_SUCCESS));
-	fn_check_setting_type(argc, argv, data);
+	fn_set_argv(argc, argv, data);
 	fn_fill_arr(data);
 	fn_fill_stack(data);
 }
@@ -58,12 +51,9 @@ void	fn_clear_memory(t_bucket *data)
 	free(data->a);
 	free(data->b);
 	free(data->input_arr);
-	if (data->arg_type == STR_ARG)
-	{
-		while (data->input_arr_str[ix])
-			free(data->input_arr_str[ix++]);
-		free(data->input_arr_str);
-	}
+	while (data->input_arr_str[ix])
+		free(data->input_arr_str[ix++]);
+	free(data->input_arr_str);
 	free(data);
 }
 

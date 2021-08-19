@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 01:04:55 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 04:04:28 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/08/20 00:56:58 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	fn_fill_arr(t_bucket *data)
 
 	ix = 0;
 	err_flag = 0;
+	data->input_arr = (int *)malloc(sizeof(int) * (data->arg_size + 1));
 	while (ix < data->arg_size)
 	{
 		err_flag = ft_isable_strtonbr(data->input_arr_str[ix]);
@@ -93,6 +94,7 @@ int	fn_fill_arr(t_bucket *data)
 			ft_strerr("Error\n");
 		ix++;
 	}
+	data->input_arr[ix] = '\0';
 	fn_bubblesort(data->input_arr, data->arg_size);
 	return (0);
 }

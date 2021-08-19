@@ -1,63 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate2_checker.c                                :+:      :+:    :+:   */
+/*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/28 02:19:46 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/28 04:24:45 by jekim            ###   ########seoul.kr  */
+/*   Created: 2021/08/18 15:47:48 by jekim             #+#    #+#             */
+/*   Updated: 2021/08/20 01:14:31 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	ft_count_word(const char *src, char c)
+int	fn_set_argv(int argc, char **argv, t_bucket *data)
 {
-	unsigned int	count;
+	int		ix;
+	int		jx;
+	int		zx;
+	char	**tmp;
 
-	count = 0;
-	while (*src)
+	zx = 0;
+	ix = 1;
+	data->input_arr_str = (char **)ft_calloc(sizeof(char *), 10000);
+	if (argc <= 1)
+		return (ft_strerr("Error\n"));
+	while (ix < argc)
 	{
-		if (*src != c && *(src + 1) == c)
-			count++;
-		if (*src != c && !*(src + 1))
-			count++;
-		src++;
-	}
-	return (count);
-}
-
-static int	fn_check_bucket_size(char **bucket)
-{
-	int	ix;
-
-	ix = 0;
-	while (bucket[ix] && ft_strlen(bucket[ix]))
+		jx = 0;
+		tmp = ft_split(argv[ix], ' ');
+		while (tmp[jx])
+			data->input_arr_str[zx++] = tmp[jx++];
+		free(tmp);
 		ix++;
-	return (ix);
-}
-
-void	fn_check_setting_type(int argc, char **argv, t_bucket *data)
-{
-	int	count;
-
-	count = ft_count_word(argv[1], ' ');
-	if (count > 1 && argc == 2)
-	{
-		data->arg_type = STR_ARG;
-		data->input_arr_str = ft_split(argv[1], ' ');
-		if (!data->input_arr_str)
-			exit(EXIT_FAILURE);
-		data->arg_size = fn_check_bucket_size(data->input_arr_str);
-		data->input_arr = (int *)ft_calloc(sizeof(int), data->arg_size);
 	}
-	else
-	{
-		data->arg_type = NUM_ARG;
-		data->input_arr_str = argv;
-		data->input_arr_str++;
-		data->input_arr = (int *)ft_calloc(sizeof(int), argc - 1);
-		data->arg_size = argc - 1;
-	}
+	data->arg_size = zx;
+	return (0);
 }
