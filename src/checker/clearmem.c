@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:53:38 by jekim             #+#    #+#             */
-/*   Updated: 2021/07/29 04:12:17 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/09/05 01:32:53 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ void	fn_clear_memory(t_bucket *data)
 	free(data->a);
 	free(data->b);
 	free(data->input_arr);
-	if (data->arg_type == STR_ARG)
-	{
-		while (data->input_arr_str[ix])
-			free(data->input_arr_str[ix++]);
-		free(data->input_arr_str);
-	}
+	while (data->input_arr_str[ix])
+		free(data->input_arr_str[ix++]);
+	free(data->input_arr_str);
 	free(data);
 }

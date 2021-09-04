@@ -6,7 +6,7 @@
 #    By: jekim <arabi1549@naver.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 16:43:27 by jekim             #+#    #+#              #
-#    Updated: 2021/08/20 00:57:33 by jekim            ###   ########seoul.kr   #
+#    Updated: 2021/09/05 01:31:42 by jekim            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ PS_FILE		=	push_swap.c \
 
 CK_FILE		=	checker.c \
 				clearmem.c	\
-				validate_checker.c	\
-				validate2_checker.c	\
+				validate.c	\
+				validate2.c	\
 				test_print_checker.c	\
 				bubblesort_checker.c
 

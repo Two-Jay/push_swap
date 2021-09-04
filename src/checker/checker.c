@@ -6,7 +6,7 @@
 /*   By: jekim <arabi1549@naver.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 19:54:08 by jekim             #+#    #+#             */
-/*   Updated: 2021/08/20 01:20:33 by jekim            ###   ########seoul.kr  */
+/*   Updated: 2021/09/05 01:31:11 by jekim            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ int	main(int argc, char **argv)
 	fn_read_inputcommand(data);
 	fn_check_sorting(data);
 	fn_clear_memory(data);
+	system("leaks checker");
 	return (0);
 }
