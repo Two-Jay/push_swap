@@ -48,8 +48,8 @@ void	fn_clear_memory(t_bucket *data)
 		ps_dlstclear(data->a);
 	if (data->b->size > 0)
 		ps_dlstclear(data->b);
-	free(data->a);
 	free(data->b);
+	free(data->a);
 	free(data->input_arr);
 	while (data->input_arr_str[ix])
 		free(data->input_arr_str[ix++]);
