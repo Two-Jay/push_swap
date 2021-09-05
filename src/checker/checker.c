@@ -84,6 +84,5 @@ int	main(int argc, char **argv)
 	fn_read_inputcommand(data);
 	fn_check_sorting(data);
 	fn_clear_memory(data);
-	system("leaks checker");
 	return (0);
 }
